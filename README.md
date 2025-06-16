@@ -94,11 +94,10 @@ data/
 
 ## 🚀 Getting Started
 
-1. **Setup**: Open `index.html` in a modern web browser
-2. **Character Selection**: Choose your background (affects starting stats and story access)
-3. **Navigate**: Use clickable choices or keyboard shortcuts
-4. **Survive**: Balance tension, maintain morale, and make difficult choices
-5. **Multiple Playthroughs**: Discover different endings and unlock achievements
+1. Run `node server.js` **or** `python start_server.py` from the project folder.
+2. Open [http://localhost:8080](http://localhost:8080) in your browser.
+
+**Important:** Opening `index.html` directly will fail because ES6 modules must be served from a web server.
 
 ## ⌨️ Controls
 
