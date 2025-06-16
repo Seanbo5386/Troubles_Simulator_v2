@@ -48,6 +48,33 @@ export class StatsManager {
         };
     }
 
+    initializePermanentStats() {
+        return {
+            totalGamesPlayed: 0,
+            totalPlayTime: 0,
+            totalChoicesMade: 0,
+
+            // Completion tracking
+            endingsUnlocked: new Set(),
+            charactersPlayed: new Set(),
+            locationsDiscovered: new Set(),
+            eventsEncountered: new Set(),
+
+            // Best/worst records
+            bestGame: null,
+            longestGame: null,
+            shortestGame: null,
+
+            // Achievement tracking
+            achievementsUnlocked: new Set(),
+            achievementProgress: {},
+
+            // First play date
+            firstPlayDate: null,
+            lastPlayDate: null
+        };
+    }
+
     loadPermanentStats() {
         try {
             const saved = localStorage.getItem('troubles_simulator_permanent_stats');
@@ -57,31 +84,8 @@ export class StatsManager {
         } catch (error) {
             console.warn('Failed to load permanent stats:', error);
         }
-        
-        return {
-            totalGamesPlayed: 0,
-            totalPlayTime: 0,
-            totalChoicesMade: 0,
-            
-            // Completion tracking
-            endingsUnlocked: new Set(),
-            charactersPlayed: new Set(),
-            locationsDiscovered: new Set(),
-            eventsEncountered: new Set(),
-            
-            // Best/worst records
-            bestGame: null,
-            longestGame: null,
-            shortestGame: null,
-            
-            // Achievement tracking
-            achievementsUnlocked: new Set(),
-            achievementProgress: {},
-            
-            // First play date
-            firstPlayDate: null,
-            lastPlayDate: null
-        };
+
+        return this.initializePermanentStats();
     }
 
     savePermanentStats() {
@@ -455,7 +459,7 @@ export class StatsManager {
     }
 
     resetPermanentStats() {
-        this.permanentStats = this.initializeSessionStats();
+        this.permanentStats = this.initializePermanentStats();
         try {
             localStorage.removeItem('troubles_simulator_permanent_stats');
         } catch (error) {

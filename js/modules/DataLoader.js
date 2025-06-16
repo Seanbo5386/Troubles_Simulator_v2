@@ -45,14 +45,21 @@ export class DataLoader {
                 this.loadOptionalJSON('endings.json')
             ]);
 
+            if (endings) {
+                if (endings.nodes) {
+                    storyGraph.nodes = { ...storyGraph.nodes, ...endings.nodes };
+                } else {
+                    storyGraph.nodes = { ...storyGraph.nodes, ...endings };
+                }
+            }
+
             return {
                 storyGraph,
                 characters,
                 locations,
                 dialogueTrees,
                 events,
-                items: items || this.getDefaultItems(),
-                endings: endings || this.getDefaultEndings()
+                items: items || this.getDefaultItems()
             };
         } catch (error) {
             console.error('Failed to load game data:', error);
@@ -157,39 +164,6 @@ export class DataLoader {
         };
     }
 
-    getDefaultEndings() {
-        return {
-            "exile": {
-                "id": "exile",
-                "name": "The Exile",
-                "description": "You chose survival over ideology",
-                "unlockConditions": {
-                    "maxTension": 20,
-                    "minMorale": 30
-                }
-            },
-            "martyr": {
-                "id": "martyr", 
-                "name": "The Martyr",
-                "description": "You died for your beliefs",
-                "unlockConditions": {
-                    "anyCondition": [
-                        {"maxMorale": 10},
-                        {"minPtsd": 80}
-                    ]
-                }
-            },
-            "survivor": {
-                "id": "survivor",
-                "name": "The Survivor", 
-                "description": "You endured against all odds",
-                "unlockConditions": {
-                    "minChoices": 20,
-                    "balancedStats": true
-                }
-            }
-        };
-    }
 
     clearCache() {
         this.cache.clear();

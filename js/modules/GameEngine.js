@@ -180,8 +180,11 @@ export class GameEngine {
         console.log('Game started successfully');
     }
 
-    async onChoiceSelected(choice) {
-        console.log('Choice selected:', choice);
+    async onChoiceSelected(detail) {
+        console.log('Choice selected:', detail);
+
+        const choice = detail.choice || detail;
+        const context = detail.context || 'story';
         
         // Handle character selection in menu state
         if (this.state === 'menu' && choice.characterId) {
@@ -193,8 +196,11 @@ export class GameEngine {
 
         // Increment choice counter
         this.gameStats.choicesMade++;
-        this.statsManager.recordChoice(choice);
-        
+
+        if (context === 'event') {
+            this.statsManager.recordChoice(choice);
+        }
+
         // Apply choice effects
         if (choice.effects) {
             this.applyEffects(choice.effects);
@@ -468,6 +474,7 @@ export class GameEngine {
         this.gameStats.eventsWitnessed.add(event.id);
         this.statsManager.witnessEvent(event.id, event.category);
         this.addJournalEntry(`Witnessed: ${event.title}`, 'event');
+        this.statsManager.witnessEvent(event.id, event.category);
         this.uiRenderer.renderEvent(event);
     }
 
