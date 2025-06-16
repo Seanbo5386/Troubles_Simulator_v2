@@ -20,8 +20,9 @@ class TroublesSimulator {
             // Load all game data
             const gameData = await this.dataLoader.loadAllData();
 
-            // Optionally preload assets like images and audio
+            // Optionally restore and preload assets when available
             if (PRELOAD_ASSETS) {
+                this.dataLoader.applyAssetPaths(gameData.locations);
                 try {
                     await this.dataLoader.preloadAssets(gameData.locations);
                 } catch (preloadError) {
