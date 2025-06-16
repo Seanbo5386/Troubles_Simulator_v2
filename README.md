@@ -94,11 +94,12 @@ data/
 
 ## 🚀 Getting Started
 
-1. **Setup**: Open `index.html` in a modern web browser
-2. **Character Selection**: Choose your background (affects starting stats and story access)
-3. **Navigate**: Use clickable choices or keyboard shortcuts
-4. **Survive**: Balance tension, maintain morale, and make difficult choices
-5. **Multiple Playthroughs**: Discover different endings and unlock achievements
+1. **Start the Server**: Run `start_server.sh` on Linux/macOS or `start_server.bat` on Windows. The script tries Node.js first and falls back to Python.
+2. **Open the Game**: Your default browser should open automatically at `http://localhost:8080`. If not, open that address manually.
+3. **Character Selection**: Choose your background (affects starting stats and story access)
+4. **Navigate**: Use clickable choices or keyboard shortcuts
+5. **Survive**: Balance tension, maintain morale, and make difficult choices
+6. **Multiple Playthroughs**: Discover different endings and unlock achievements
 
 ## ⌨️ Controls
 
