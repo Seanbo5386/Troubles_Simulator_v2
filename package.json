@@ -1,0 +1,19 @@
+{
+  "name": "troubles-simulator-v2",
+  "version": "1.0.0",
+  "description": "Interactive story game simulator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "echo \"No linter configured\"",
+    "build": "echo \"No build step required for static files\""
+  },
+  "keywords": ["game", "interactive", "story", "simulator"],
+  "author": "Seanbo5386",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
