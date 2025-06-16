@@ -6,10 +6,12 @@
       "location": "belfast_city_centre",
       "triggerConditions": {
         "minTension": 5,
-        "excludeIfTriggered": ["bombing_aftermath"]
+        "excludeIfTriggered": [
+          "bombing_aftermath"
+        ]
       },
       "title": "Bomb Explosion",
-      "description": "A deafening explosion rocks the street ahead of you. Through the smoke and screaming, you see bodies scattered among the debris. Glass and concrete rain down as car alarms wail. The acrid smell of explosives mixes with something worse.",
+      "description": "A thunderous blast flips cars and shatters storefronts. Smoke stings your eyes and the street echoes with panicked screams.",
       "choices": [
         {
           "text": "Rush to help the wounded",
@@ -39,7 +41,10 @@
         },
         {
           "text": "Take photographs of the scene",
-          "requirements": ["notebook", "press_pass"],
+          "requirements": [
+            "notebook",
+            "press_pass"
+          ],
           "effects": {
             "morale": -8,
             "ptsd": 10,
@@ -59,7 +64,7 @@
         "maxMorale": 50
       },
       "title": "Sectarian Killing",
-      "description": "You witness a man being dragged from his car by masked figures. His pleas for mercy are cut short by gunshots. His crime was being on the wrong side of the peace wall at the wrong time. The killers melt away into the night, leaving only silence and blood.",
+      "description": "Masked men drag a driver from his car, accusations flying before gunshots end his pleas. Blood pools on the tarmac as silence returns.",
       "choices": [
         {
           "text": "Try to identify the killers",
@@ -96,7 +101,7 @@
         "minTension": 6
       },
       "title": "Police Brutality",
-      "description": "RUC officers have cornered a teenager against a wall. Their batons rise and fall with sickening thuds. The boy's cries echo off the brick walls as blood streams down his face. 'This is what happens to fenian scum,' one officer growls.",
+      "description": "RUC batons rise and fall on a cornered teenager. Each dull crack reverberates down the alley while onlookers avert their gaze.",
       "choices": [
         {
           "text": "Intervene directly",
@@ -135,6 +140,67 @@
             "tension": 3
           },
           "consequence": "You hurry past, trying to block out the sounds. Sometimes the price of involvement is too high to pay. The guilt follows you home.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "drive_by_attack",
+      "type": "violence",
+      "location": "shankill_road",
+      "triggerConditions": {
+        "minTension": 7
+      },
+      "title": "Drive-by Shooting",
+      "description": "A car screeches past and automatic fire erupts, leaving shattered windows and bodies in its wake.",
+      "choices": [
+        {
+          "text": "Take cover and stay silent",
+          "effects": {
+            "tension": 5,
+            "ptsd": 10
+          },
+          "consequence": "You dive behind a wall until the gunfire fades.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Try to note the license plate",
+          "effects": {
+            "tension": 8,
+            "ptsd": 12
+          },
+          "consequence": "You catch a glimpse of the plate, knowledge that could make you a target.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "night_raid",
+      "type": "violence",
+      "location": "countryside_safehouse",
+      "triggerConditions": {
+        "characterId": "ira_volunteer",
+        "minTension": 6
+      },
+      "title": "Night Raid",
+      "description": "Spotlights sweep the farmhouse as troops surround the building, shouting orders over bullhorns.",
+      "choices": [
+        {
+          "text": "Slip out the back",
+          "effects": {
+            "tension": 10,
+            "morale": -5
+          },
+          "consequence": "You escape into the fields but leave comrades behind.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Barricade the door",
+          "effects": {
+            "tension": 15,
+            "ptsd": 10
+          },
+          "consequence": "You brace for a siege as bootsteps pound on the porch.",
           "nextNode": "location_hub"
         }
       ]
@@ -353,13 +419,76 @@
           "nextNode": "location_hub"
         }
       ]
+    },
+    {
+      "id": "family_package",
+      "type": "moral",
+      "location": "falls_road",
+      "triggerConditions": {
+        "characterId": "catholic_teen"
+      },
+      "title": "A Relative's Request",
+      "description": "An older cousin hands you a sealed box, insisting it be delivered across town without questions.",
+      "choices": [
+        {
+          "text": "Agree to deliver it",
+          "effects": {
+            "tension": 5,
+            "morale": -5
+          },
+          "consequence": "The weight of the unknown package grows heavier with every step.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Refuse and demand answers",
+          "effects": {
+            "tension": 8,
+            "morale": 5
+          },
+          "consequence": "Your cousin's eyes narrow with hurt and suspicion.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "press_ethics",
+      "type": "moral",
+      "location": "belfast_city_centre",
+      "triggerConditions": {
+        "characterId": "foreign_reporter"
+      },
+      "title": "Graphic Photo Opportunity",
+      "description": "A bystander urges you to photograph a dying victim for proof. The scene is horrific.",
+      "choices": [
+        {
+          "text": "Take the photo",
+          "effects": {
+            "ptsd": 10,
+            "morale": -5
+          },
+          "consequence": "The image will haunt you, but it might sway public opinion.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Lower the camera",
+          "effects": {
+            "morale": 5,
+            "tension": -2
+          },
+          "consequence": "You choose compassion over evidence, leaving the story incomplete.",
+          "nextNode": "location_hub"
+        }
+      ]
     }
   ],
   "randomEncounters": [
     {
       "id": "checkpoint_search",
       "type": "encounter",
-      "locations": ["military_checkpoint", "border_crossing"],
+      "locations": [
+        "military_checkpoint",
+        "border_crossing"
+      ],
       "triggerChance": 0.6,
       "title": "Random Search",
       "description": "The soldiers motion you over for a more thorough inspection. They empty your pockets and question your purpose in the area.",
@@ -384,6 +513,64 @@
             }
           },
           "consequence": "Your attitude is noted as 'uncooperative.' The search becomes more thorough and humiliating, but they find nothing.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "lost_child",
+      "type": "encounter",
+      "locations": [
+        "falls_road",
+        "belfast_city_centre"
+      ],
+      "triggerChance": 0.4,
+      "title": "Lost Child",
+      "description": "A small child tugs your sleeve, sobbing that they can't find their parents amid the chaos.",
+      "choices": [
+        {
+          "text": "Help search for the parents",
+          "effects": {
+            "morale": 5
+          },
+          "consequence": "After a tense search you reunite the family, earning grateful smiles.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Point them toward a soldier",
+          "effects": {
+            "tension": -2
+          },
+          "consequence": "You send the child toward the checkpoint, uncertain if that's truly safe.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "secret_meeting",
+      "type": "encounter",
+      "locations": [
+        "local_pub"
+      ],
+      "triggerChance": 0.3,
+      "title": "Whispered Invitation",
+      "description": "A stranger slips you a note requesting a late-night meeting in an alley.",
+      "choices": [
+        {
+          "text": "Attend the meeting",
+          "effects": {
+            "tension": 5
+          },
+          "consequence": "The rendezvous reveals new rumors swirling through the city.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Burn the note",
+          "effects": {
+            "morale": 2,
+            "tension": -1
+          },
+          "consequence": "You decide it's best not to get involved with shadowy figures.",
           "nextNode": "location_hub"
         }
       ]

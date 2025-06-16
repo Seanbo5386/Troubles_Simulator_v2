@@ -2,7 +2,7 @@
   "press_pass": {
     "id": "press_pass",
     "name": "Press Pass",
-    "description": "Official journalist credentials that may help in tense situations",
+    "description": "A laminated badge stamped with foreign press credentials. Flashing it can open doors\u2014or paint a target on your back.",
     "type": "document",
     "effects": {
       "factionReputation": {
@@ -15,7 +15,7 @@
   "notebook": {
     "id": "notebook",
     "name": "Reporter's Notebook",
-    "description": "A worn notebook filled with observations and contacts",
+    "description": "Pages dog-eared and ink-stained, filled with hurried interviews and half-legible shorthand.",
     "type": "tool",
     "effects": {},
     "usable": false,
@@ -24,7 +24,7 @@
   "government_id": {
     "id": "government_id",
     "name": "Government ID",
-    "description": "Civil service identification card",
+    "description": "An official card bearing the Crown's crest. It grants access but also binds you to bureaucracy.",
     "type": "document",
     "effects": {
       "factionReputation": {
@@ -37,7 +37,7 @@
   "coded_message": {
     "id": "coded_message",
     "name": "Coded Message",
-    "description": "An encrypted note with strategic information",
+    "description": "A scrap of paper covered in numbers and phrases only a trained eye can decipher.",
     "type": "document",
     "effects": {
       "tension": -3,
@@ -49,7 +49,7 @@
   "fake_id": {
     "id": "fake_id",
     "name": "Fake ID",
-    "description": "Forged identification documents",
+    "description": "An expertly forged document, perfect until someone looks too closely.",
     "type": "document",
     "effects": {
       "tension": -5
@@ -61,7 +61,7 @@
   "first_aid_kit": {
     "id": "first_aid_kit",
     "name": "First Aid Kit",
-    "description": "Basic medical supplies for treating injuries",
+    "description": "A small pouch of bandages and antiseptic\u2014life-saving when violence erupts.",
     "type": "medical",
     "effects": {
       "morale": 10,
@@ -73,7 +73,7 @@
   "old_photograph": {
     "id": "old_photograph",
     "name": "Family Photograph",
-    "description": "A faded photo of happier times",
+    "description": "A creased snapshot of smiling faces, a reminder of what peace once looked like.",
     "type": "personal",
     "effects": {
       "morale": 5,

@@ -2,13 +2,21 @@
   "falls_road": {
     "id": "falls_road",
     "name": "Falls Road",
-    "description": "Tense streets filled with murals and frequent patrols. The air is thick with unspoken loyalties and the constant threat of violence.",
+    "description": "The claustrophobic streets smell of damp brick and spray paint. Murals glare down as patrol boots echo through the night, each step questioning your loyalty.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/falls-road.jpg",
     "ambientSound": "",
-    "originalAmbientSound": "assets/audio/urban-tension.mp3", 
-    "connections": ["peace_line", "local_pub", "belfast_city_centre"],
-    "npcs": ["local_resident", "ira_sympathizer", "british_patrol"],
+    "originalAmbientSound": "assets/audio/urban-tension.mp3",
+    "connections": [
+      "peace_line",
+      "local_pub",
+      "belfast_city_centre"
+    ],
+    "npcs": [
+      "local_resident",
+      "ira_sympathizer",
+      "british_patrol"
+    ],
     "searchable": true,
     "atmosphere": {
       "lighting": "harsh streetlights",
@@ -24,14 +32,21 @@
   },
   "peace_line": {
     "id": "peace_line",
-    "name": "Peace Line", 
-    "description": "Towering concrete and steel walls separating communities, watched over by troops in fortified posts. The barriers stretch as far as the eye can see.",
+    "name": "Peace Line",
+    "description": "Concrete and steel slice the community in two, razor wire and floodlights turning every passerby into a suspect.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/peace-wall.jpg",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/wind-barriers.mp3",
-    "connections": ["falls_road", "shankill_road"],
-    "npcs": ["british_soldier", "checkpoint_guard", "local_resident"],
+    "connections": [
+      "falls_road",
+      "shankill_road"
+    ],
+    "npcs": [
+      "british_soldier",
+      "checkpoint_guard",
+      "local_resident"
+    ],
     "searchable": false,
     "atmosphere": {
       "lighting": "harsh spotlights",
@@ -46,15 +61,22 @@
     ]
   },
   "shankill_road": {
-    "id": "shankill_road", 
+    "id": "shankill_road",
     "name": "Shankill Road",
-    "description": "A fiercely loyalist area where Union Jacks fly from many windows and murals depict paramilitary figures in stark detail.",
+    "description": "Frying grease and cigarette smoke mingle as loyalist songs drift from doorways. Union Jacks flap like warnings, and murals of masked men stake their claim.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/shankill-road.jpg", 
+    "originalBackgroundImage": "assets/images/shankill-road.jpg",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/loyalist-area.mp3",
-    "connections": ["peace_line", "local_pub"],
-    "npcs": ["uda_member", "loyalist_resident", "paramilitiry_volunteer"],
+    "connections": [
+      "peace_line",
+      "local_pub"
+    ],
+    "npcs": [
+      "uda_member",
+      "loyalist_resident",
+      "paramilitiry_volunteer"
+    ],
     "searchable": true,
     "atmosphere": {
       "lighting": "red, white, and blue bunting",
@@ -71,13 +93,20 @@
   "countryside_safehouse": {
     "id": "countryside_safehouse",
     "name": "Countryside Safehouse",
-    "description": "A quiet farmhouse rumored to be a hideout. The silence of the fields feels heavier than the city's noise, broken only by distant helicopters.",
+    "description": "A lonely farmhouse hides behind hedgerows, the damp earth heavy with the thrum of distant helicopters. Every creak could be an informer at the door.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/irish-countryside.jpg",
     "ambientSound": "",
-    "originalAmbientSound": "assets/audio/rural-helicopters.mp3", 
-    "connections": ["peace_line", "border_crossing"],
-    "npcs": ["safe_house_keeper", "fellow_volunteer", "farmer"],
+    "originalAmbientSound": "assets/audio/rural-helicopters.mp3",
+    "connections": [
+      "peace_line",
+      "border_crossing"
+    ],
+    "npcs": [
+      "safe_house_keeper",
+      "fellow_volunteer",
+      "farmer"
+    ],
     "searchable": true,
     "atmosphere": {
       "lighting": "dim candlelight",
@@ -94,13 +123,21 @@
   "local_pub": {
     "id": "local_pub",
     "name": "Local Pub",
-    "description": "A smoky, dimly lit atmosphere where whispers of recent events are traded over pints. Strangers are noted and carefully watched.",
+    "description": "Stale ale and old smoke cling to the low ceiling as murmured gossip passes between wary patrons. Strangers are judged in the time it takes to order a pint.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/irish-pub.jpg",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/pub-chatter.mp3",
-    "connections": ["falls_road", "shankill_road"],
-    "npcs": ["bartender", "local_drinker", "informant", "off_duty_soldier"],
+    "connections": [
+      "falls_road",
+      "shankill_road"
+    ],
+    "npcs": [
+      "bartender",
+      "local_drinker",
+      "informant",
+      "off_duty_soldier"
+    ],
     "searchable": false,
     "atmosphere": {
       "lighting": "warm amber glow",
@@ -116,21 +153,29 @@
   },
   "belfast_city_centre": {
     "id": "belfast_city_centre",
-    "name": "Belfast City Centre", 
-    "description": "Bomb-scarred shops and offices operate under the watchful eyes of security forces. The resilience of the people is palpable despite the constant threat.",
+    "name": "Belfast City Centre",
+    "description": "Glass crunches underfoot between boarded shops while sirens wail in the distance. Armored cars idle nearby, yet life presses on, brittle but unbroken.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/belfast-centre.jpg",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/urban-anxiety.mp3",
-    "connections": ["falls_road", "bombed_factory"],
-    "npcs": ["shopkeeper", "security_guard", "journalist", "police_officer"],
+    "connections": [
+      "falls_road",
+      "bombed_factory"
+    ],
+    "npcs": [
+      "shopkeeper",
+      "security_guard",
+      "journalist",
+      "police_officer"
+    ],
     "searchable": true,
     "atmosphere": {
       "lighting": "natural daylight filtered by dust",
       "weather": "intermittent rain",
       "mood": "determined normalcy"
     },
-    "environmentDetails": [  
+    "environmentDetails": [
       "Shoppers move quickly between stores, their eyes scanning for suspicious packages.",
       "Security barriers channel pedestrians through narrow checkpoints.",
       "Glass from last week's explosion still crunches underfoot in places.",
@@ -140,13 +185,20 @@
   "bombed_factory": {
     "id": "bombed_factory",
     "name": "Bombed Factory",
-    "description": "A skeleton of rubble and twisted metal from a recent blast. The acrid smell of destruction hangs heavy in the air.",
+    "description": "Charred beams claw at a gray sky, the stench of burnt chemicals clinging to your clothes as rescue workers sift through the wreckage.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/bomb-damage.jpg", 
+    "originalBackgroundImage": "assets/images/bomb-damage.jpg",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/desolation.mp3",
-    "connections": ["belfast_city_centre", "military_checkpoint"],
-    "npcs": ["rescue_worker", "investigator", "survivor"],
+    "connections": [
+      "belfast_city_centre",
+      "military_checkpoint"
+    ],
+    "npcs": [
+      "rescue_worker",
+      "investigator",
+      "survivor"
+    ],
     "searchable": true,
     "atmosphere": {
       "lighting": "harsh emergency lighting",
@@ -163,17 +215,24 @@
   "military_checkpoint": {
     "id": "military_checkpoint",
     "name": "Military Checkpoint",
-    "description": "Armored vehicles and grim-faced soldiers block the road. Every car is stopped, every face scrutinized, every bag searched.",
+    "description": "Spotlights glare off armored plating as soldiers wave traffic through a gauntlet of sandbags. Radios crackle, and the line of cars grows restless.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/checkpoint.jpg",
     "ambientSound": "",
-    "originalAmbientSound": "assets/audio/military-checkpoint.mp3", 
-    "connections": ["bombed_factory", "border_crossing"],
-    "npcs": ["checkpoint_commander", "british_soldier", "ruc_officer"],
+    "originalAmbientSound": "assets/audio/military-checkpoint.mp3",
+    "connections": [
+      "bombed_factory",
+      "border_crossing"
+    ],
+    "npcs": [
+      "checkpoint_commander",
+      "british_soldier",
+      "ruc_officer"
+    ],
     "searchable": false,
     "atmosphere": {
       "lighting": "harsh spotlights",
-      "weather": "cold and exposed", 
+      "weather": "cold and exposed",
       "mood": "authoritarian control"
     },
     "environmentDetails": [
@@ -181,29 +240,44 @@
       "A sign warns that failure to stop will result in the use of lethal force.",
       "Soldiers with blackened faces peer through rifle scopes, fingers never far from triggers.",
       "The checkpoint is a reminder that in this place, freedom of movement is never guaranteed."
-    ]
+    ],
+    "perspectiveDescriptions": {
+      "catholic_teen": "Soldiers' eyes track your every move, suspicion heavy in the air.",
+      "protestant_civil": "The checkpoint feels like a necessary shield, and the soldiers nod politely."
+    }
   },
   "border_crossing": {
     "id": "border_crossing",
     "name": "Border Crossing",
-    "description": "A heavily fortified checkpoint marking the divide between north and south. Here, every crossing is a political act with potentially deadly consequences.",
+    "description": "Barriers funnel travelers into narrow lanes under suspicious eyes. A single wrong answer here can change the rest of your life.",
     "backgroundImage": "",
     "originalBackgroundImage": "assets/images/border-crossing.jpg",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/border-tension.mp3",
-    "connections": ["military_checkpoint", "countryside_safehouse"],
-    "npcs": ["border_guard", "customs_officer", "smuggler"],
+    "connections": [
+      "military_checkpoint",
+      "countryside_safehouse"
+    ],
+    "npcs": [
+      "border_guard",
+      "customs_officer",
+      "smuggler"
+    ],
     "searchable": false,
     "atmosphere": {
       "lighting": "institutional fluorescents",
       "weather": "neutral territory",
-      "mood": "bureaucratic menace" 
+      "mood": "bureaucratic menace"
     },
     "environmentDetails": [
       "The invisible line on the map becomes very real in the presence of armed guards.",
       "Documents are examined with the intensity of life-or-death decisions.",
       "On both sides of the border, similar accents speak with very different authorities.",
       "The crossing represents both escape and entrapment, depending on which direction you're traveling."
-    ]
+    ],
+    "perspectiveDescriptions": {
+      "ira_volunteer": "Every soldier here could recognize you; the border feels less like an exit and more like a trap.",
+      "foreign_reporter": "The guards treat you with forced politeness, wary of your questions."
+    }
   }
 }
