@@ -186,12 +186,20 @@ export class GameEngine {
         const choice = detail.choice || detail;
         const context = detail.context || 'story';
         
-        // Handle character selection in menu state
-        if (this.state === 'menu' && choice.characterId) {
-            this.startGame(choice.characterId);
+        // Handle menu interactions before gameplay starts
+        if (this.state === 'menu') {
+            if (choice.characterId) {
+                this.startGame(choice.characterId);
+                return;
+            }
+
+            if (choice.nextNode) {
+                await this.processStoryNode(choice.nextNode);
+            }
+
             return;
         }
-        
+
         if (this.state !== 'playing') return;
 
         // Increment choice counter
