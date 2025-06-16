@@ -4,6 +4,17 @@ export class DataLoader {
         this.baseDataPath = './data/';
     }
 
+    applyAssetPaths(locations) {
+        Object.values(locations).forEach(loc => {
+            if (!loc.backgroundImage && loc.originalBackgroundImage) {
+                loc.backgroundImage = loc.originalBackgroundImage;
+            }
+            if (!loc.ambientSound && loc.originalAmbientSound) {
+                loc.ambientSound = loc.originalAmbientSound;
+            }
+        });
+    }
+
     async loadJSON(filename) {
         // Check cache first
         if (this.cache.has(filename)) {

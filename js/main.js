@@ -2,6 +2,7 @@ import { GameEngine } from './modules/GameEngine.js';
 import { DataLoader } from './modules/DataLoader.js';
 import { i18n } from './modules/i18n.js';
 
+const PRELOAD_ASSETS = false; // Set to true when assets are available
 class TroublesSimulator {
     constructor() {
         this.gameEngine = null;
@@ -19,11 +20,16 @@ class TroublesSimulator {
             // Load all game data
             const gameData = await this.dataLoader.loadAllData();
 
-            // Preload assets like images and audio
-            try {
-                await this.dataLoader.preloadAssets(gameData.locations);
-            } catch (preloadError) {
-                console.error('Asset preloading failed:', preloadError);
+            // Optionally restore and preload assets when available
+            if (PRELOAD_ASSETS) {
+                this.dataLoader.applyAssetPaths(gameData.locations);
+                try {
+                    await this.dataLoader.preloadAssets(gameData.locations);
+                } catch (preloadError) {
+                    console.error('Asset preloading failed:', preloadError);
+                }
+            } else {
+                console.log('Asset preloading skipped');
             }
 
             // Initialize game engine
