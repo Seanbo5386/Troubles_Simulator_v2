@@ -255,6 +255,49 @@
           "effects": {
             "tension": 2
           }
+        },
+        "fishing_for_info": {
+          "text": "Depends on what you're after. There's talk of all sorts tonight.",
+          "choices": [
+            {
+              "text": "What's this about more patrols?",
+              "nextNode": "rumor_about_patrols",
+              "requirements": []
+            },
+            {
+              "text": "Never mind, forget I asked.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
+        },
+        "rumor_about_patrols": {
+          "text": "Word is the Army patrols are going to start cracking down harder in this area. Searching everyone, asking more questions. Some say they're looking for a specific person.",
+          "choices": [
+            {
+              "text": "Who are they looking for?",
+              "nextNode": "evasive_about_patrols",
+              "requirements": []
+            },
+            {
+              "text": "Thanks for the warning. I'll be careful.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "tension": 1
+          }
+        },
+        "evasive_about_patrols": {
+          "text": "Wouldn't do to name names. Just keep your head down and stay out of sight, alright?",
+          "choices": [
+            {
+              "text": "Fair enough.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
         }
       }
     }

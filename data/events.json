@@ -236,6 +236,40 @@
           "nextNode": "location_hub"
         }
       ]
+    },
+    {
+      "id": "propaganda_leaflet",
+      "type": "moral",
+      "location": "belfast_city_centre",
+      "title": "A Misleading Leaflet",
+      "description": "You find a stack of freshly printed leaflets accusing a local shopkeeper, known for being neutral, of being an informant for the British Army. The claims seem baseless and designed to ruin his life. A group of youths is preparing to distribute them.",
+      "choices": [
+        {
+          "text": "Intervene and try to convince the youths the leaflet is poison.",
+          "effects": {
+            "morale": 3,
+            "tension": 5,
+            "factionReputation": {
+              "civilians": 2,
+              "ira": -3
+            }
+          },
+          "consequence": "You point out the lies and urge them to stop. A few walk away uncertain, but others glare, branding you a sympathizer. Word spreads quickly.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Walk away and let the man's reputation be destroyed, ensuring your own safety.",
+          "effects": {
+            "morale": -5,
+            "tension": -2,
+            "factionReputation": {
+              "civilians": -2
+            }
+          },
+          "consequence": "You leave them to it, trying not to think about the damage those papers will do. Guilt settles in as the shouts fade behind you.",
+          "nextNode": "location_hub"
+        }
+      ]
     }
   ],
   "randomEncounters": [
