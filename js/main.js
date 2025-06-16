@@ -123,10 +123,19 @@ class TroublesSimulator {
 }
 
 // Initialize the game when DOM is loaded
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     const game = new TroublesSimulator();
     game.setupGlobalEventListeners();
-    await game.init();
+
+    const startBtn = document.getElementById('start-game-btn');
+    if (startBtn) {
+        startBtn.addEventListener('click', async () => {
+            document.getElementById('start-screen')?.classList.add('hidden');
+            await game.init();
+        });
+    } else {
+        game.init();
+    }
 });
 
 // Export for global access if needed
