@@ -513,7 +513,7 @@ export class UIRenderer {
         this.elements.settingsModal?.classList.add('hidden');
     }
 
-    showEnding(endingNode, player, gameStats) {
+    showEnding(endingNode, player, sessionStats) {
         const modal = this.elements.endgameModal;
         if (!modal) return;
 
@@ -530,17 +530,17 @@ export class UIRenderer {
             endingContent.innerHTML = endingNode.text;
         }
 
-        if (finalStats && gameStats) {
-            const playTime = gameStats.endTime - gameStats.startTime;
-            const playTimeMinutes = Math.floor(playTime / 60000);
-            
+        if (finalStats && sessionStats) {
+            const playTime = sessionStats.playTimeFormatted || '0:00';
+
             finalStats.innerHTML = `
                 <div>
                     <h4 class="font-bold mb-2">Final Statistics</h4>
-                    <p>Play Time: ${playTimeMinutes} minutes</p>
-                    <p>Choices Made: ${gameStats.choicesMade}</p>
-                    <p>Locations Visited: ${gameStats.locationsVisited.size}</p>
-                    <p>NPCs Met: ${gameStats.npcsMet.size}</p>
+                    <p>Play Time: ${playTime}</p>
+                    <p>Choices Made: ${sessionStats.choicesMade}</p>
+                    <p>Locations Visited: ${sessionStats.locationsVisited.length}</p>
+                    <p>NPCs Met: ${sessionStats.npcsMet.length}</p>
+                    <p>Events Witnessed: ${sessionStats.eventsWitnessed.length}</p>
                 </div>
                 <div>
                     <h4 class="font-bold mb-2">Final Stats</h4>

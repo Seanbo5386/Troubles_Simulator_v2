@@ -130,6 +130,9 @@ export class GameEngine {
 
     startGame(characterId) {
         console.log(`Starting game with character: ${characterId}`);
+
+        // Begin statistics session
+        this.statsManager.startSession(characterId);
         
         // Initialize player
         const characterData = this.gameData.characters[characterId];
@@ -158,6 +161,7 @@ export class GameEngine {
         this.state = 'playing';
         this.gameStats.startTime = Date.now();
         this.gameStats.locationsVisited.add(this.currentPlayer.location);
+        this.statsManager.visitLocation(this.currentPlayer.location);
         
         // Enable save button
         document.getElementById('save-btn').disabled = false;
@@ -186,9 +190,10 @@ export class GameEngine {
         }
         
         if (this.state !== 'playing') return;
-        
+
         // Increment choice counter
         this.gameStats.choicesMade++;
+        this.statsManager.recordChoice(choice);
         
         // Apply choice effects
         if (choice.effects) {
@@ -286,6 +291,7 @@ export class GameEngine {
         this.currentPlayer.location = locationId;
         this.currentLocation = location;
         this.gameStats.locationsVisited.add(locationId);
+        this.statsManager.visitLocation(locationId);
         
         // Add journal entry
         this.addJournalEntry(`Traveled to ${location.name}`, 'location');
@@ -316,6 +322,7 @@ export class GameEngine {
         };
 
         this.gameStats.npcsMet.add(npcId);
+        this.statsManager.meetNPC(npcId);
         this.addJournalEntry(`Spoke with ${npcData.name}`, 'interaction');
         
         this.uiRenderer.renderDialogue(this.activeDialogue);
@@ -459,6 +466,7 @@ export class GameEngine {
 
     triggerEvent(event) {
         this.gameStats.eventsWitnessed.add(event.id);
+        this.statsManager.witnessEvent(event.id, event.category);
         this.addJournalEntry(`Witnessed: ${event.title}`, 'event');
         this.uiRenderer.renderEvent(event);
     }
@@ -550,7 +558,11 @@ export class GameEngine {
     endGame(endingNode) {
         this.state = 'ended';
         this.gameStats.endTime = Date.now();
-        
+
+        // Finalize statistics session
+        this.statsManager.endSession(endingNode.endingType);
+        const sessionStats = this.statsManager.getSessionStatistics();
+
         // Disable save button
         document.getElementById('save-btn').disabled = true;
         
@@ -558,7 +570,7 @@ export class GameEngine {
         this.audioManager.stopAmbientSound();
         
         // Show ending
-        this.uiRenderer.showEnding(endingNode, this.currentPlayer, this.gameStats);
+        this.uiRenderer.showEnding(endingNode, this.currentPlayer, sessionStats);
     }
 
     saveGame() {
