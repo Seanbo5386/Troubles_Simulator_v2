@@ -1,3 +1,5 @@
+const AUDIO_ASSETS_AVAILABLE = false; // Set to true when assets are available
+
 export class AudioManager {
     constructor() {
         this.ambientAudio = null;
@@ -5,7 +7,10 @@ export class AudioManager {
         this.masterVolume = 0.5;
         this.ambientVolume = 0.3;
         this.effectVolume = 0.7;
+
+        //this.isEnabled = AUDIO_ASSETS_AVAILABLE; //COMMENTED OUT DUE TO BELOW LINE.
         this.isEnabled = false; // Set to true when assets are available
+
         this.currentAmbientTrack = null;
         this.fadeInterval = null;
     }
@@ -307,10 +312,10 @@ export class AudioManager {
                 this.masterVolume = settings.masterVolume ?? this.masterVolume;
                 this.ambientVolume = settings.ambientVolume ?? this.ambientVolume;
                 this.effectVolume = settings.effectVolume ?? this.effectVolume;
-                this.isEnabled = settings.isEnabled ?? this.isEnabled;
-                
+                this.isEnabled = AUDIO_ASSETS_AVAILABLE && (settings.isEnabled ?? this.isEnabled);
+
                 this.updateVolumes();
-                
+
                 // Update UI controls if they exist
                 this.updateUIControls();
             }
