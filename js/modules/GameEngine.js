@@ -207,11 +207,20 @@ export class GameEngine {
 
         if (context === 'event') {
             this.statsManager.recordChoice(choice);
-        }
 
-        // Apply choice effects
-        if (choice.effects) {
-            this.applyEffects(choice.effects);
+            const result = this.eventManager.processEventChoice(choice, this.currentPlayer);
+            if (result && result.consequence) {
+                await this.uiRenderer.renderText(
+                    result.consequence,
+                    this.uiRenderer.elements.output,
+                    { append: true }
+                );
+            }
+        } else {
+            // Apply choice effects for regular story choices
+            if (choice.effects) {
+                this.applyEffects(choice.effects);
+            }
         }
         
         // Add to journal
@@ -464,13 +473,15 @@ export class GameEngine {
     }
 
     checkForRandomEvents() {
+        if (this.eventManager.activeEvent) return;
+
         if (Math.random() < 0.3) { // 30% chance
             const availableEvents = this.eventManager.getAvailableEvents(
                 this.currentPlayer.location,
                 this.currentPlayer,
                 this.gameStats
             );
-            
+
             if (availableEvents.length > 0) {
                 const event = availableEvents[Math.floor(Math.random() * availableEvents.length)];
                 this.triggerEvent(event);
@@ -478,11 +489,16 @@ export class GameEngine {
         }
     }
 
-    triggerEvent(event) {
+    triggerEvent(eventData) {
+        const event = this.eventManager.triggerEvent(
+            eventData,
+            this.currentPlayer,
+            this.gameStats
+        );
+
         this.gameStats.eventsWitnessed.add(event.id);
         this.statsManager.witnessEvent(event.id, event.category);
         this.addJournalEntry(`Witnessed: ${event.title}`, 'event');
-        this.statsManager.witnessEvent(event.id, event.category);
         this.uiRenderer.renderEvent(event);
     }
 
