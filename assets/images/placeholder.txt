@@ -1,0 +1,11 @@
+This directory is for background images.
+Add images like:
+- falls-road.jpg
+- peace-wall.jpg
+- shankill-road.jpg
+- irish-countryside.jpg
+- irish-pub.jpg
+- belfast-centre.jpg
+- bomb-damage.jpg
+- checkpoint.jpg
+- border-crossing.jpg

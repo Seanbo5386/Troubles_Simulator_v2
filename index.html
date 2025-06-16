@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troubles Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="p-4 md:p-8">
+    <div class="vignette"></div>
+    <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-4 gap-6">
+        
+        <!-- Main Content Column -->
+        <div class="xl:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <header class="mb-6">
+                    <h1 class="text-4xl font-bold mb-2 text-gray-100 border-b-2 border-yellow-400 pb-2">
+                        Troubles Simulator
+                    </h1>
+                    <div class="flex gap-4 mt-4">
+                        <button id="save-btn" class="control-btn bg-blue-600 hover:bg-blue-700" disabled>
+                            Save Game
+                        </button>
+                        <button id="load-btn" class="control-btn bg-green-600 hover:bg-green-700">
+                            Load Game
+                        </button>
+                        <button id="restart-btn" class="control-btn bg-red-600 hover:bg-red-700">
+                            Restart
+                        </button>
+                        <button id="settings-btn" class="control-btn bg-gray-600 hover:bg-gray-700">
+                            Settings
+                        </button>
+                    </div>
+                </header>
+
+                <main id="game-area" class="relative">
+                    <div id="background-image" class="absolute inset-0 opacity-30 bg-cover bg-center transition-all duration-1000"></div>
+                    <div id="output" class="relative z-10 h-[60vh] lg:h-[75vh] overflow-y-auto p-6 rounded-lg shadow-inner text-lg leading-relaxed glass-panel">
+                        <!-- Game text will be rendered here -->
+                    </div>
+                    
+                    <div id="choices-container" class="mt-6 space-y-3">
+                        <!-- Choice buttons will be rendered here -->
+                    </div>
+
+                    <div id="input-area" class="mt-4 flex" style="display: none;">
+                        <span class="prompt-text p-2 text-xl" data-i18n="prompt">&gt;</span>
+                        <input type="text" id="prompt-input" class="w-full p-2 rounded-l-md focus:outline-none focus:ring-2 focus:ring-yellow-400 text-lg" 
+                               placeholder="What do you do?" data-i18n-placeholder="input_placeholder">
+                        <button id="submit-button" class="bg-gray-700 text-white px-4 rounded-r-md hover:bg-gray-600 transition-colors" data-i18n="submit">
+                            Enter
+                        </button>
+                    </div>
+                </main>
+            </div>
+
+            <!-- Stats Column -->
+            <div class="space-y-6">
+                <!-- Status Panel -->
+                <div id="stats-panel" class="glass-panel p-4">
+                    <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="status">Status</h2>
+                    <div id="status-content" class="space-y-4">
+                        <div>
+                            <p class="mb-2"><strong data-i18n="tension">Tension:</strong> <span id="tension-level">0</span></p>
+                            <div class="progress-bar">
+                                <div id="tension-bar" class="progress-fill bg-red-500 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mb-2"><strong data-i18n="morale">Morale:</strong> <span id="morale-level">0</span></p>
+                            <div class="progress-bar">
+                                <div id="morale-bar" class="progress-fill bg-blue-500 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mb-2"><strong data-i18n="ptsd">PTSD:</strong> <span id="ptsd-level">0</span></p>
+                            <div class="progress-bar">
+                                <div id="ptsd-bar" class="progress-fill bg-purple-500 transition-all duration-500"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="mb-2"><strong data-i18n="faction_rep">Faction Relations:</strong></p>
+                            <ul id="faction-list" class="text-sm space-y-1">
+                                <!-- Faction reputations will be rendered here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inventory Panel -->
+                <div id="inventory-panel" class="glass-panel p-4">
+                    <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="inventory">Inventory</h2>
+                    <ul id="inventory-list" class="space-y-1">
+                        <li data-i18n="empty">(empty)</li>
+                    </ul>
+                </div>
+
+                <!-- Actions Panel -->
+                <div id="actions-panel" class="glass-panel p-4">
+                    <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="actions">Actions</h2>
+                    <div id="action-buttons" class="flex flex-wrap gap-2">
+                        <!-- Action buttons will be rendered here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Journal Sidebar -->
+        <div id="journal-sidebar" class="space-y-6">
+            <div class="glass-panel p-4">
+                <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="journal">Journal</h2>
+                <div id="journal-content" class="max-h-96 overflow-y-auto space-y-3">
+                    <!-- Journal entries will be rendered here -->
+                </div>
+            </div>
+
+            <div class="glass-panel p-4">
+                <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="character_info">Character</h2>
+                <div id="character-info">
+                    <p id="character-name" class="font-semibold mb-2"></p>
+                    <p id="character-background" class="text-sm text-gray-300 mb-3"></p>
+                    <p><strong data-i18n="location">Location:</strong> <span id="current-location"></span></p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-4">
+                <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="statistics">Statistics</h2>
+                <div id="game-stats" class="text-sm space-y-1">
+                    <p><strong data-i18n="choices_made">Choices Made:</strong> <span id="choices-count">0</span></p>
+                    <p><strong data-i18n="locations_visited">Locations Visited:</strong> <span id="locations-count">0</span></p>
+                    <p><strong data-i18n="npcs_met">NPCs Met:</strong> <span id="npcs-count">0</span></p>
+                    <p><strong data-i18n="events_witnessed">Events Witnessed:</strong> <span id="events-count">0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal hidden">
+        <div class="modal-content glass-panel p-6 max-w-md mx-auto mt-20">
+            <h2 class="text-2xl font-bold mb-4" data-i18n="settings">Settings</h2>
+            <div class="space-y-4">
+                <div>
+                    <label class="block mb-2" data-i18n="master_volume">Master Volume</label>
+                    <input id="master-volume" type="range" min="0" max="100" value="50" class="w-full">
+                </div>
+                <div>
+                    <label class="block mb-2" data-i18n="ambient_volume">Ambient Volume</label>
+                    <input id="ambient-volume" type="range" min="0" max="100" value="30" class="w-full">
+                </div>
+                <div>
+                    <label class="block mb-2" data-i18n="text_speed">Text Speed</label>
+                    <select id="text-speed" class="w-full p-2 rounded bg-gray-700">
+                        <option value="fast" data-i18n="fast">Fast</option>
+                        <option value="medium" data-i18n="medium" selected>Medium</option>
+                        <option value="slow" data-i18n="slow">Slow</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <input id="accessibility-mode" type="checkbox" class="rounded">
+                    <label for="accessibility-mode" data-i18n="accessibility_mode">High Contrast Mode</label>
+                </div>
+            </div>
+            <div class="flex justify-end space-x-2 mt-6">
+                <button id="close-settings" class="control-btn bg-gray-600 hover:bg-gray-700" data-i18n="close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Game Modal -->
+    <div id="endgame-modal" class="modal hidden">
+        <div class="modal-content glass-panel p-8 max-w-2xl mx-auto mt-12">
+            <h2 id="ending-title" class="text-3xl font-bold mb-4"></h2>
+            <div id="ending-content" class="mb-6"></div>
+            <div id="final-stats" class="grid grid-cols-2 gap-4 mb-6 text-sm">
+                <!-- Final statistics will be rendered here -->
+            </div>
+            <div class="flex justify-center space-x-4">
+                <button id="play-again" class="control-btn bg-green-600 hover:bg-green-700" data-i18n="play_again">
+                    Play Again
+                </button>
+                <button id="view-journal" class="control-btn bg-blue-600 hover:bg-blue-700" data-i18n="view_journal">
+                    View Journal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="modal">
+        <div class="flex items-center justify-center h-screen">
+            <div class="text-center">
+                <div class="loading-spinner mb-4"></div>
+                <p class="text-xl" data-i18n="loading">Loading...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="ambient-audio" loop></audio>
+    <audio id="effect-audio"></audio>
+
+    <!-- Scripts -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

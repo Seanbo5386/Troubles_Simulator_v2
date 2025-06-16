@@ -1,0 +1,275 @@
+{
+  "violentEvents": [
+    {
+      "id": "bombing_aftermath",
+      "type": "violence",
+      "location": "belfast_city_centre",
+      "triggerConditions": {
+        "minTension": 5,
+        "excludeIfTriggered": ["bombing_aftermath"]
+      },
+      "title": "Bomb Explosion",
+      "description": "A deafening explosion rocks the street ahead of you. Through the smoke and screaming, you see bodies scattered among the debris. Glass and concrete rain down as car alarms wail. The acrid smell of explosives mixes with something worse.",
+      "choices": [
+        {
+          "text": "Rush to help the wounded",
+          "effects": {
+            "morale": -10,
+            "ptsd": 15,
+            "tension": 5,
+            "factionReputation": {
+              "civilians": 3
+            }
+          },
+          "consequence": "You ignore your own safety and dive into the chaos. The sight of mangled bodies will haunt your dreams, but you help save three lives that day. The grateful families remember your courage.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Flee the scene immediately", 
+          "effects": {
+            "morale": -5,
+            "ptsd": 5,
+            "tension": 8,
+            "factionReputation": {
+              "civilians": -1
+            }
+          },
+          "consequence": "Your survival instincts kick in and you run. You hear the cries for help behind you, but self-preservation wins. You're safe, but the guilt gnaws at you.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Take photographs of the scene",
+          "requirements": ["notebook", "press_pass"],
+          "effects": {
+            "morale": -8,
+            "ptsd": 10,
+            "tension": 3
+          },
+          "consequence": "Your journalist training takes over. The photos you capture will tell the world about this atrocity, but documenting such horror changes something inside you.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "sectarian_murder",
+      "type": "violence", 
+      "location": "peace_line",
+      "triggerConditions": {
+        "minTension": 8,
+        "maxMorale": 50
+      },
+      "title": "Sectarian Killing",
+      "description": "You witness a man being dragged from his car by masked figures. His pleas for mercy are cut short by gunshots. His crime was being on the wrong side of the peace wall at the wrong time. The killers melt away into the night, leaving only silence and blood.",
+      "choices": [
+        {
+          "text": "Try to identify the killers",
+          "effects": {
+            "morale": -15,
+            "ptsd": 20,
+            "tension": 10,
+            "factionReputation": {
+              "ira": -2,
+              "uda": -2
+            }
+          },
+          "consequence": "You memorize faces and details, knowing this information could be dangerous. The weight of being a witness to murder settles on your shoulders like a lead blanket.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Pretend you saw nothing",
+          "effects": {
+            "morale": -5,
+            "ptsd": 8,
+            "tension": 5
+          },
+          "consequence": "You keep walking, eyes fixed ahead. In this world, selective blindness is often the price of survival. But forgetting what you've seen is harder than expected.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "police_brutality",
+      "type": "violence",
+      "location": "falls_road",
+      "triggerConditions": {
+        "characterId": "catholic_teen",
+        "minTension": 6
+      },
+      "title": "Police Brutality",
+      "description": "RUC officers have cornered a teenager against a wall. Their batons rise and fall with sickening thuds. The boy's cries echo off the brick walls as blood streams down his face. 'This is what happens to fenian scum,' one officer growls.",
+      "choices": [
+        {
+          "text": "Intervene directly",
+          "effects": {
+            "morale": -5,
+            "ptsd": 12,
+            "tension": 15,
+            "factionReputation": {
+              "british_army": -5,
+              "ira": 2,
+              "civilians": 2
+            }
+          },
+          "consequence": "You step forward despite the danger. The beating stops, but now you're marked as a troublemaker. The boy lives, but you've made powerful enemies.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Create a distraction",
+          "effects": {
+            "morale": -2,
+            "ptsd": 8,
+            "tension": 8,
+            "factionReputation": {
+              "british_army": -2,
+              "civilians": 1
+            }
+          },
+          "consequence": "You shout about a fire down the street. The officers are momentarily distracted, giving the boy a chance to escape. It's not much, but it's something.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Walk away quickly",
+          "effects": {
+            "morale": -8,
+            "ptsd": 5,
+            "tension": 3
+          },
+          "consequence": "You hurry past, trying to block out the sounds. Sometimes the price of involvement is too high to pay. The guilt follows you home.",
+          "nextNode": "location_hub"
+        }
+      ]
+    }
+  ],
+  "moralDilemmas": [
+    {
+      "id": "informant_approach",
+      "type": "moral",
+      "location": "local_pub", 
+      "triggerConditions": {
+        "minTension": 4
+      },
+      "title": "The Informant's Offer",
+      "description": "A nervous man slides into the seat beside you. 'I know who you are,' he whispers. 'I can keep certain people from asking questions about you... for a price. Information. Nothing that would hurt innocents, just operational details.'",
+      "choices": [
+        {
+          "text": "Agree to provide information",
+          "effects": {
+            "morale": -20,
+            "tension": -5,
+            "factionReputation": {
+              "british_army": 3,
+              "ira": -5,
+              "uda": -3
+            }
+          },
+          "consequence": "You cross a line that can never be uncrossed. The protection is real, but so is the price to your soul. You're safer, but you're also a traitor.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Refuse and threaten to expose him",
+          "effects": {
+            "morale": 5,
+            "tension": 12,
+            "factionReputation": {
+              "ira": 2,
+              "british_army": -3
+            }
+          },
+          "consequence": "The informant pales and hurries away. You've maintained your integrity, but you've also made a dangerous enemy who knows your secrets.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Listen but commit to nothing",
+          "effects": {
+            "tension": 8
+          },
+          "consequence": "You nod noncommittally and excuse yourself. The informant watches you leave with calculating eyes. This conversation isn't over.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "weapons_cache",
+      "type": "moral",
+      "location": "countryside_safehouse",
+      "triggerConditions": {
+        "characterId": "ira_volunteer"
+      },
+      "title": "The Weapons Cache",
+      "description": "While searching the cellar, you discover a hidden cache of weapons and explosives. Among them is a bomb that matches the description of one used in last week's attack that killed civilians. Your fingerprints are now on the evidence.",
+      "choices": [
+        {
+          "text": "Report the cache to authorities",
+          "effects": {
+            "morale": -10,
+            "ptsd": 5,
+            "tension": 20,
+            "factionReputation": {
+              "ira": -10,
+              "british_army": 5,
+              "civilians": 3
+            }
+          },
+          "consequence": "You make an anonymous call to the police. The raid happens at dawn. Some will call you a hero, others a traitor. The line between right and wrong has never been blurrier.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Leave everything as you found it",
+          "effects": {
+            "morale": -15,
+            "ptsd": 8,
+            "tension": 5
+          },
+          "consequence": "You carefully replace everything and try to forget what you saw. But the knowledge burns inside you like acid. How many more will die because of your silence?",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Destroy the evidence secretly",
+          "effects": {
+            "morale": -5,
+            "tension": 15,
+            "factionReputation": {
+              "ira": -3
+            }
+          },
+          "consequence": "Working by candlelight, you dismantle what you can. It's not a solution, but it might prevent some deaths. The risk of discovery keeps you awake for weeks.",
+          "nextNode": "location_hub"
+        }
+      ]
+    }
+  ],
+  "randomEncounters": [
+    {
+      "id": "checkpoint_search",
+      "type": "encounter",
+      "locations": ["military_checkpoint", "border_crossing"],
+      "triggerChance": 0.6,
+      "title": "Random Search",
+      "description": "The soldiers motion you over for a more thorough inspection. They empty your pockets and question your purpose in the area.",
+      "choices": [
+        {
+          "text": "Cooperate fully",
+          "effects": {
+            "tension": 2,
+            "factionReputation": {
+              "british_army": 1
+            }
+          },
+          "consequence": "Your cooperation is noted. The search reveals nothing suspicious, and you're allowed to continue.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Assert your rights",
+          "effects": {
+            "tension": 5,
+            "factionReputation": {
+              "british_army": -2
+            }
+          },
+          "consequence": "Your attitude is noted as 'uncooperative.' The search becomes more thorough and humiliating, but they find nothing.",
+          "nextNode": "location_hub"
+        }
+      ]
+    }
+  ]
+}

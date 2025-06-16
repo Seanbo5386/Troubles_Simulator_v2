@@ -1,0 +1,336 @@
+/* Custom CSS for Troubles Simulator */
+
+:root {
+    --primary-bg: #1a1a1a;
+    --secondary-bg: #262626;
+    --accent-color: #facc15;
+    --text-primary: #e0e0e0;
+    --text-secondary: #9ca3af;
+    --glass-bg: rgba(38, 38, 38, 0.8);
+    --glass-border: rgba(75, 85, 99, 0.3);
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    background: linear-gradient(135deg, var(--primary-bg) 0%, #2d2d2d 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Accessibility Mode */
+body.accessibility-mode {
+    --primary-bg: #000000;
+    --secondary-bg: #ffffff;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    background: #000000;
+}
+
+body.accessibility-mode .glass-panel {
+    background: #333333;
+    border: 2px solid #ffffff;
+}
+
+/* Glass Effect */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Vignette Effect */
+.vignette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Typography */
+.prompt-text {
+    color: #9dffad;
+}
+
+.command-text {
+    color: #87cefa;
+}
+
+.location-title {
+    color: var(--accent-color);
+}
+
+/* Buttons */
+.control-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    border: none;
+    cursor: pointer;
+    color: white;
+}
+
+.control-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.choice-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin: 8px 0;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.choice-btn:hover {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(250, 204, 21, 0.3);
+}
+
+.choice-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.action-button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: var(--secondary-bg);
+    border: 1px solid #444;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-size: 0.875rem;
+}
+
+.action-button:hover {
+    background: var(--accent-color);
+    color: var(--primary-bg);
+    border-color: var(--accent-color);
+}
+
+/* Progress Bars */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #374151;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Journal Styles */
+.journal-entry {
+    padding: 8px 12px;
+    margin: 4px 0;
+    background: rgba(75, 85, 99, 0.2);
+    border-left: 3px solid var(--accent-color);
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.journal-entry.major {
+    border-left-color: #ef4444;
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.journal-entry.interaction {
+    border-left-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Loading Animation */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--glass-border);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Text Animation */
+.typing-text {
+    overflow: hidden;
+    border-right: 2px solid var(--accent-color);
+    white-space: nowrap;
+    animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--accent-color); }
+}
+
+/* Faction Reputation Colors */
+.faction-ira { color: #22c55e; }
+.faction-uda { color: #ef4444; }
+.faction-british-army { color: #3b82f6; }
+.faction-civilians { color: #f59e0b; }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .xl\:col-span-3 {
+        order: 1;
+    }
+    
+    #journal-sidebar {
+        order: 2;
+    }
+    
+    .choice-btn {
+        padding: 16px;
+        font-size: 1rem;
+    }
+    
+    .control-btn {
+        padding: 12px 16px;
+        font-size: 0.875rem;
+    }
+}
+
+/* Focus Styles for Accessibility */
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Adjustments */
+@media (prefers-contrast: high) {
+    :root {
+        --glass-bg: rgba(0, 0, 0, 0.9);
+        --glass-border: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Background Image Styles */
+#background-image {
+    transition: opacity 1s ease-in-out, background-image 1s ease-in-out;
+}
+
+#background-image.fade-in {
+    opacity: 0.4;
+}
+
+/* Stats Panel Enhancements */
+#faction-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 0;
+}
+
+.faction-meter {
+    width: 60px;
+    height: 4px;
+    background: #374151;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-left: 8px;
+}
+
+.faction-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Ending Styles */
+.ending-exile { border-left: 4px solid #6366f1; }
+.ending-martyr { border-left: 4px solid #ef4444; }
+.ending-survivor { border-left: 4px solid #22c55e; }
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 16px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    z-index: 1002;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.success { border-left: 4px solid #22c55e; }
+.notification.warning { border-left: 4px solid #f59e0b; }
+.notification.error { border-left: 4px solid #ef4444; }

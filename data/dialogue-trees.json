@@ -1,0 +1,262 @@
+{
+  "npcs": {
+    "local_resident": {
+      "name": "Local Resident",
+      "description": "A weathered face marked by years of conflict",
+      "dialogueTree": {
+        "initial": {
+          "text": "Times are hard around here. You'd best watch yourself.",
+          "choices": [
+            {
+              "text": "What's been happening lately?",
+              "nextNode": "recent_events",
+              "requirements": []
+            },
+            {
+              "text": "Any advice for staying safe?", 
+              "nextNode": "safety_advice",
+              "requirements": []
+            },
+            {
+              "text": "I'll be careful. Thanks.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
+        },
+        "recent_events": {
+          "text": "There was another bomb last night. Three more families lost everything. The paramilitaries on both sides are getting bolder.",
+          "choices": [
+            {
+              "text": "Do you know who was responsible?",
+              "nextNode": "blame_game", 
+              "requirements": []
+            },
+            {
+              "text": "That's terrible. Anyone hurt?",
+              "nextNode": "casualties",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "morale": -5,
+            "tension": 2
+          }
+        },
+        "safety_advice": {
+          "text": "Keep your head down, don't ask too many questions, and never trust anyone completely. Even your neighbors might be informants.",
+          "choices": [
+            {
+              "text": "That sounds like a terrible way to live.",
+              "nextNode": "harsh_reality",
+              "requirements": []
+            },
+            {
+              "text": "Thanks for the warning.",
+              "nextNode": "grateful_exit", 
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "tension": 1
+          }
+        }
+      }
+    },
+    "ira_sympathizer": {
+      "name": "Republican Sympathizer",
+      "description": "Someone who speaks in careful euphemisms about 'the struggle'",
+      "dialogueTree": {
+        "initial": {
+          "text": "You look like someone who understands what's really going on here.",
+          "choices": [
+            {
+              "text": "What do you mean?",
+              "nextNode": "the_cause",
+              "requirements": []
+            },
+            {
+              "text": "I try to stay out of politics.",
+              "nextNode": "neutral_response",
+              "requirements": []
+            },
+            {
+              "text": "The situation is complicated.",
+              "nextNode": "diplomatic_response",
+              "requirements": []
+            }
+          ]
+        },
+        "the_cause": {
+          "text": "The cause of freedom doesn't advance itself. We need people who are willing to make sacrifices for what's right.",
+          "choices": [
+            {
+              "text": "What kind of sacrifices?",
+              "nextNode": "recruitment_pitch",
+              "requirements": []
+            },
+            {
+              "text": "Violence isn't the answer.",
+              "nextNode": "pacifist_response",
+              "requirements": []
+            },
+            {
+              "text": "I understand your frustration.",
+              "nextNode": "sympathetic_response",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "factionReputation": {
+              "ira": 1
+            },
+            "tension": 2
+          }
+        }
+      }
+    },
+    "british_soldier": {
+      "name": "British Soldier",
+      "description": "A young soldier in full combat gear, alert and suspicious",
+      "dialogueTree": {
+        "initial": {
+          "text": "Right then, let's see some identification. Routine security check.",
+          "choices": [
+            {
+              "text": "Here's my ID.",
+              "nextNode": "id_check",
+              "requirements": []
+            },
+            {
+              "text": "What's this about?",
+              "nextNode": "questioning_authority",
+              "requirements": []
+            },
+            {
+              "text": "Am I in some kind of trouble?",
+              "nextNode": "nervous_response",
+              "requirements": []
+            }
+          ]
+        },
+        "id_check": {
+          "text": "Hmm. Says here you're from the Falls Road area. Been having trouble with terrorists from that sector lately.",
+          "choices": [
+            {
+              "text": "I'm not involved in anything like that.",
+              "nextNode": "denial",
+              "requirements": []
+            },
+            {
+              "text": "What kind of trouble?",
+              "nextNode": "probe_information",
+              "requirements": []
+            },
+            {
+              "text": "Can I go now?",
+              "nextNode": "eager_to_leave",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "tension": 3,
+            "factionReputation": {
+              "british_army": -1
+            }
+          }
+        }
+      }
+    },
+    "uda_member": {
+      "name": "UDA Member", 
+      "description": "A hard-faced individual with tattoos visible under rolled sleeves",
+      "dialogueTree": {
+        "initial": {
+          "text": "Don't recognize you from around here. You'd better have a good reason for being on our streets.",
+          "choices": [
+            {
+              "text": "Just passing through.",
+              "nextNode": "suspicious_response",
+              "requirements": []
+            },
+            {
+              "text": "I belong here as much as anyone.",
+              "nextNode": "defiant_response", 
+              "requirements": []
+            },
+            {
+              "text": "I don't want any trouble.",
+              "nextNode": "submissive_response",
+              "requirements": []
+            }
+          ]
+        },
+        "suspicious_response": {
+          "text": "Passing through to where, exactly? We keep track of everyone who comes and goes. Especially those with republican sympathies.",
+          "choices": [
+            {
+              "text": "I'm not political.",
+              "nextNode": "apolitical_claim",
+              "requirements": []
+            },
+            {
+              "text": "That's none of your business.",
+              "nextNode": "confrontational",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "tension": 4,
+            "factionReputation": {
+              "uda": -2
+            }
+          }
+        }
+      }
+    },
+    "bartender": {
+      "name": "Pub Owner",
+      "description": "The keeper of secrets and dispenser of wisdom",
+      "dialogueTree": {
+        "initial": {
+          "text": "What'll it be then? And keep your voice down - walls have ears in this place.",
+          "choices": [
+            {
+              "text": "Just a pint, please.",
+              "nextNode": "simple_order",
+              "requirements": []
+            },
+            {
+              "text": "What's the mood like tonight?",
+              "nextNode": "read_the_room",
+              "requirements": []
+            },
+            {
+              "text": "Heard anything interesting lately?",
+              "nextNode": "fishing_for_info",
+              "requirements": []
+            }
+          ]
+        },
+        "read_the_room": {
+          "text": "Tense as a bowstring. Word is there's going to be retaliation for last week's incident. People are choosing sides.",
+          "choices": [
+            {
+              "text": "What kind of retaliation?",
+              "nextNode": "violence_warning",
+              "requirements": []
+            },
+            {
+              "text": "Maybe people should just let it go.",
+              "nextNode": "naive_suggestion",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "tension": 2
+          }
+        }
+      }
+    }
+  }
+}

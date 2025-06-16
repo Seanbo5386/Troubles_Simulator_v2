@@ -1,0 +1,81 @@
+{
+  "nodes": {
+    "intro": {
+      "id": "intro",
+      "type": "story",
+      "text": "The following game depicts fictional situations inspired by real historical events.<br><br>It is not intended to trivialize the suffering caused during The Troubles, but rather to encourage reflection on the difficult choices faced by ordinary people.<br>Proceed with care and empathy.",
+      "choices": [
+        {
+          "text": "Continue",
+          "nextNode": "character_selection"
+        }
+      ]
+    },
+    "character_selection": {
+      "id": "character_selection", 
+      "type": "character_selection",
+      "text": "Choose your background:",
+      "choices": [
+        {
+          "text": "Catholic teen from Belfast",
+          "characterId": "catholic_teen",
+          "nextNode": "game_start"
+        },
+        {
+          "text": "Protestant civil servant", 
+          "characterId": "protestant_civil",
+          "nextNode": "game_start"
+        },
+        {
+          "text": "Foreign reporter",
+          "characterId": "foreign_reporter", 
+          "nextNode": "game_start"
+        },
+        {
+          "text": "IRA volunteer lying low",
+          "characterId": "ira_volunteer",
+          "nextNode": "game_start"
+        }
+      ]
+    },
+    "game_start": {
+      "id": "game_start",
+      "type": "story", 
+      "text": "The city's tensions are now your own. You must navigate carefully through the divided streets of Belfast.",
+      "choices": [
+        {
+          "text": "Begin your journey",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    "location_hub": {
+      "id": "location_hub",
+      "type": "location_hub",
+      "text": "You are at {currentLocation}. What do you want to do?",
+      "choices": []
+    },
+    "ending_exile": {
+      "id": "ending_exile",
+      "type": "ending",
+      "endingType": "exile",
+      "text": "The weight of constant suspicion and fear becomes too much. You gather what few belongings you can carry and slip away in the night, leaving behind everything you once knew. The boat to Liverpool carries you toward an uncertain future, but away from the endless cycle of violence. You are alive, but forever marked by what you've witnessed.",
+      "choices": []
+    },
+    "ending_martyr": {
+      "id": "ending_martyr", 
+      "type": "ending",
+      "endingType": "martyr",
+      "text": "Your final act of defiance echoes through the streets long after the gunfire fades. The murals painted in your memory tell a story of someone who stood for their beliefs, no matter the cost. In death, you become a symbol - though whether of hope or tragedy depends on who tells your story.",
+      "choices": []
+    },
+    "ending_survivor": {
+      "id": "ending_survivor",
+      "type": "ending", 
+      "endingType": "survivor",
+      "text": "Against all odds, you've managed to navigate the treacherous currents of sectarian violence without losing yourself completely. The scars run deep - both visible and hidden - but you endure. Perhaps there's wisdom in survival, and hope that the next generation might find a different path.",
+      "choices": []
+    }
+  },
+  "startNode": "intro"
+}

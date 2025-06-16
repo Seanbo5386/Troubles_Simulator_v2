@@ -1,0 +1,11 @@
+This directory is for ambient audio files.
+Add audio files like:
+- urban-tension.mp3
+- wind-barriers.mp3
+- loyalist-area.mp3
+- rural-helicopters.mp3
+- pub-chatter.mp3
+- urban-anxiety.mp3
+- desolation.mp3
+- military-checkpoint.mp3
+- border-tension.mp3
