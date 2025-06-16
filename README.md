@@ -94,10 +94,12 @@ data/
 
 ## 🚀 Getting Started
 
-1. Run `node server.js` **or** `python start_server.py` from the project folder.
-2. Open [http://localhost:8080](http://localhost:8080) in your browser.
-
-**Important:** Opening `index.html` directly will fail because ES6 modules must be served from a web server.
+1. **Start the Server**: Run `start_server.sh` on Linux/macOS or `start_server.bat` on Windows. The script tries Node.js first and falls back to Python.
+2. **Open the Game**: Your default browser should open automatically at `http://localhost:8080`. If not, open that address manually.
+3. **Character Selection**: Choose your background (affects starting stats and story access)
+4. **Navigate**: Use clickable choices or keyboard shortcuts
+5. **Survive**: Balance tension, maintain morale, and make difficult choices
+6. **Multiple Playthroughs**: Discover different endings and unlock achievements
 
 ## ⌨️ Controls
 
