@@ -25,7 +25,7 @@
           "nextNode": "location_hub"
         },
         {
-          "text": "Flee the scene immediately", 
+          "text": "Flee the scene immediately",
           "effects": {
             "morale": -5,
             "ptsd": 5,
@@ -52,7 +52,7 @@
     },
     {
       "id": "sectarian_murder",
-      "type": "violence", 
+      "type": "violence",
       "location": "peace_line",
       "triggerConditions": {
         "minTension": 8,
@@ -144,7 +144,7 @@
     {
       "id": "informant_approach",
       "type": "moral",
-      "location": "local_pub", 
+      "location": "local_pub",
       "triggerConditions": {
         "minTension": 4
       },
@@ -267,6 +267,89 @@
             }
           },
           "consequence": "You leave them to it, trying not to think about the damage those papers will do. Guilt settles in as the shouts fade behind you.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "loyalist_pressure",
+      "type": "moral",
+      "location": "shankill_road",
+      "triggerConditions": {
+        "characterId": "protestant_civil"
+      },
+      "title": "Loyalist Demands",
+      "description": "At a back-room meeting, hardline loyalists ask you to use your civil service job to sabotage housing applications from Catholic neighborhoods.",
+      "choices": [
+        {
+          "text": "Quietly refuse and leave",
+          "effects": {
+            "morale": -5,
+            "tension": 10
+          },
+          "consequence": "You make excuses and get out as quickly as possible. Word spreads you might not be fully committed.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Agree to help them",
+          "effects": {
+            "morale": -20,
+            "tension": -5,
+            "factionReputation": {
+              "uda": 3
+            }
+          },
+          "consequence": "You agree, gaining protection from loyalists but losing your integrity.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Threaten to expose them",
+          "effects": {
+            "morale": 5,
+            "tension": 15,
+            "factionReputation": {
+              "uda": -5
+            }
+          },
+          "consequence": "They warn you that you're making powerful enemies. For now, they let you leave.",
+          "nextNode": "location_hub"
+        }
+      ]
+    },
+    {
+      "id": "threatening_call",
+      "type": "moral",
+      "location": "belfast_city_centre",
+      "triggerConditions": {
+        "characterId": "foreign_reporter"
+      },
+      "title": "Threatening Phone Call",
+      "description": "An anonymous caller warns you to stop digging into a recent bombing. They know where you are staying.",
+      "choices": [
+        {
+          "text": "Keep investigating despite the threat",
+          "effects": {
+            "morale": -5,
+            "tension": 10
+          },
+          "consequence": "Fear grips you but your resolve hardens. You double-check the locks on your door before heading out.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Contact your editor for advice",
+          "effects": {
+            "tension": -2
+          },
+          "consequence": "Your editor urges caution and promises to look into additional security. It's some comfort.",
+          "nextNode": "location_hub"
+        },
+        {
+          "text": "Lay low and avoid further reporting",
+          "effects": {
+            "morale": -10,
+            "tension": -5
+          },
+          "consequence": "You decide a story isn't worth your life. Another journalist might pick it up, but you feel defeated.",
           "nextNode": "location_hub"
         }
       ]
