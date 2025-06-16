@@ -17,6 +17,7 @@ export class GameEngine {
         this.saveManager = new SaveManager();
         this.eventManager = new EventManager(gameData.events);
         this.statsManager = new StatsManager();
+        this.glossary = gameData.glossary || {};
         
         // Game state
         this.currentPlayer = null;
@@ -94,9 +95,17 @@ export class GameEngine {
             this.uiRenderer.showSettings();
         });
 
+        document.getElementById('glossary-btn').addEventListener('click', () => {
+            this.uiRenderer.showGlossary(this.glossary);
+        });
+
         // Settings modal
         document.getElementById('close-settings').addEventListener('click', () => {
             this.uiRenderer.hideSettings();
+        });
+
+        document.getElementById('close-glossary').addEventListener('click', () => {
+            this.uiRenderer.hideGlossary();
         });
 
         // Volume controls

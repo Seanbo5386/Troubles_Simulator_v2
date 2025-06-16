@@ -1,0 +1,14 @@
+{
+  "ira": {
+    "title": "Irish Republican Army (IRA)",
+    "description": "A republican paramilitary group seeking to end British rule in Northern Ireland."
+  },
+  "uda": {
+    "title": "Ulster Defence Association (UDA)",
+    "description": "A loyalist paramilitary organization defending unionist interests."
+  },
+  "bloody_sunday": {
+    "title": "Bloody Sunday (1972)",
+    "description": "British soldiers shot unarmed civil rights protesters in Derry, escalating tensions across Northern Ireland."
+  }
+}
