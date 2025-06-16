@@ -23,7 +23,7 @@ A comprehensive, immersive narrative game exploring the complex moral landscape 
 ### **Modern UI/UX**
 - **Glass Panel Design**: Beautiful, atmospheric interface with backdrop blur effects
 - **Animated Progress Bars**: Visual feedback for tension, morale, and PTSD levels
- - **Interactive Journal**: Persistent log of major choices with a new "fog of war" effect that mirrors the character's mental state
+ - **Interactive Journal**: Persistent log of major choices with a "fog of war" effect that distorts text based on tension, morale, and PTSD levels
 - **Responsive Design**: Optimized for desktop and mobile devices
 
 ### **Visual & Audio Atmosphere**
