@@ -54,8 +54,12 @@ export class GameEngine {
             // Set up event listeners
             this.setupEventListeners();
             
-            // Initialize UI
-            this.uiRenderer.showIntroduction(this.gameData.storyGraph.nodes.intro);
+
+            // Initialize UI with character selection to avoid repeating the intro
+            this.uiRenderer.renderCharacterSelection(
+                this.gameData.storyGraph.nodes.character_selection,
+                this.gameData.characters
+            );
             
             this.state = 'menu';
             console.log('Game engine initialized successfully');
@@ -680,7 +684,10 @@ export class GameEngine {
             
             // Reset UI
             this.uiRenderer.reset();
-            this.uiRenderer.showIntroduction(this.gameData.storyGraph.nodes.intro);
+            this.uiRenderer.renderCharacterSelection(
+                this.gameData.storyGraph.nodes.character_selection,
+                this.gameData.characters
+            );
             
             // Stop audio
             this.audioManager.stopAll();
