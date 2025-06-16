@@ -13,6 +13,7 @@ A comprehensive, immersive narrative game exploring the complex moral landscape 
 ### **Enhanced Dialogue & NPCs**
 - **Full Dialogue Trees**: Rich, branching conversations with multiple response options
 - **Faction Reputation System**: Dynamic relationships with IRA, UDA, British Army, and Civilians
+- **Personal Relationship System**: Individual NPCs track how much they like or dislike you
 - **Character-driven Interactions**: Each NPC has unique dialogue trees and story relevance
 
 ### **Violence & Consequences**

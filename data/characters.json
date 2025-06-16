@@ -16,6 +16,7 @@
       "british_army": -1,
       "civilians": 1
     },
+    "npcRelationships": {},
     "background": "Raised amid nightly patrols and whispered warnings, you've memorized every alley and escape route on the Falls Road. Friends have vanished without explanation, teaching you early that trust can be fatal.",
     "uniqueKnowledge": [
       "knows_back_alleys",
@@ -41,6 +42,7 @@
       "british_army": 1,
       "civilians": 0
     },
+    "npcRelationships": {},
     "background": "Working in the city council means navigating mountains of paperwork and political favors. You've seen how housing lists and permits can become weapons, and you know which forms go missing.",
     "uniqueKnowledge": [
       "bureaucratic_shortcuts",
@@ -67,6 +69,7 @@
       "british_army": 0,
       "civilians": 0
     },
+    "npcRelationships": {},
     "background": "Armed with a press pass and an outsider's eye, you're determined to capture the human stories behind the headlines. Everyone wants to bend your ear, yet no one fully trusts you.",
     "uniqueKnowledge": [
       "press_contacts",
@@ -93,6 +96,7 @@
       "british_army": -3,
       "civilians": -1
     },
+    "npcRelationships": {},
     "background": "You once shouted slogans with conviction, but months in hiding have worn you raw. Your network of safe houses is shrinking, and paranoia competes with devotion to the cause.",
     "uniqueKnowledge": [
       "code_phrases",

@@ -33,6 +33,7 @@ export class UIRenderer {
             ptsdLevel: document.getElementById('ptsd-level'),
             ptsdBar: document.getElementById('ptsd-bar'),
             factionList: document.getElementById('faction-list'),
+            npcRelationsList: document.getElementById('npc-relations-list'),
             
             // Inventory
             inventoryList: document.getElementById('inventory-list'),
@@ -386,6 +387,9 @@ export class UIRenderer {
         // Update faction reputation
         this.updateFactionReputation(player.factionReputation);
 
+        // Update NPC relationships
+        this.updateNpcRelationships(player.npcRelationships);
+
         // Update inventory
         this.updateInventory(player.inventory);
 
@@ -433,6 +437,24 @@ export class UIRenderer {
     getReputationPercentage(reputation) {
         // Convert reputation range (-10 to 10) to percentage (0 to 100)
         return Math.max(0, Math.min(100, ((reputation + 10) / 20) * 100));
+    }
+
+    updateNpcRelationships(npcRel) {
+        if (!npcRel || !this.elements.npcRelationsList) return;
+
+        this.elements.npcRelationsList.innerHTML = '';
+
+        Object.keys(npcRel).forEach(npc => {
+            const value = npcRel[npc];
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${npc.replace(/_/g, ' ')}</span>
+                <div class="faction-meter">
+                    <div class="faction-fill" style="width: ${this.getReputationPercentage(value)}%"></div>
+                </div>
+            `;
+            this.elements.npcRelationsList.appendChild(li);
+        });
     }
 
     updateInventory(inventory) {
@@ -668,7 +690,7 @@ export class UIRenderer {
             <ul class="list-disc list-inside space-y-2 text-sm">
                 <li>Make choices by clicking on the available options</li>
                 <li>Monitor your tension, morale, and PTSD levels</li>
-                <li>Keep track of your relationships with different factions</li>
+                <li>Keep track of your relationships with factions and individuals</li>
                 <li>Use items from your inventory when appropriate</li>
                 <li>Your choices have consequences - choose wisely</li>
             </ul>

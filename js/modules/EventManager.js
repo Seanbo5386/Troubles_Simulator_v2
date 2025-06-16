@@ -222,6 +222,14 @@ export class EventManager {
                         player.factionReputation[faction] = Math.max(-10, Math.min(10, player.factionReputation[faction]));
                     }
                 });
+            } else if (key === 'npcRelations') {
+                Object.keys(effects[key]).forEach(npc => {
+                    if (player.npcRelationships[npc] === undefined) {
+                        player.npcRelationships[npc] = 0;
+                    }
+                    player.npcRelationships[npc] += effects[key][npc];
+                    player.npcRelationships[npc] = Math.max(-10, Math.min(10, player.npcRelationships[npc]));
+                });
             } else if (player.stats[key] !== undefined) {
                 player.stats[key] += effects[key];
                 
