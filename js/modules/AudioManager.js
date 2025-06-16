@@ -5,7 +5,7 @@ export class AudioManager {
         this.masterVolume = 0.5;
         this.ambientVolume = 0.3;
         this.effectVolume = 0.7;
-        this.isEnabled = true;
+        this.isEnabled = false; // Set to true when assets are available
         this.currentAmbientTrack = null;
         this.fadeInterval = null;
     }
