@@ -50,6 +50,8 @@ export class StatsManager {
             // Faction relationships
             bestFactionRelationship: { faction: null, value: 0 },
             worstFactionRelationship: { faction: null, value: 0 },
+            bestNpcRelationship: { npc: null, value: 0 },
+            worstNpcRelationship: { npc: null, value: 0 },
             
             // Violence and moral choices
             violentEventsWitnessed: 0,
@@ -300,6 +302,27 @@ export class StatsManager {
                     this.sessionStats.worstFactionRelationship = {
                         faction,
                         value: reputation
+                    };
+                }
+            });
+        }
+
+        // Track NPC relationships
+        if (player.npcRelationships) {
+            Object.keys(player.npcRelationships).forEach(npc => {
+                const value = player.npcRelationships[npc];
+
+                if (value > this.sessionStats.bestNpcRelationship.value) {
+                    this.sessionStats.bestNpcRelationship = {
+                        npc,
+                        value
+                    };
+                }
+
+                if (value < this.sessionStats.worstNpcRelationship.value) {
+                    this.sessionStats.worstNpcRelationship = {
+                        npc,
+                        value
                     };
                 }
             });

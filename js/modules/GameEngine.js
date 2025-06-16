@@ -158,6 +158,7 @@ export class GameEngine {
             stats: { ...characterData.startingStats },
             inventory: [...characterData.startingInventory],
             factionReputation: { ...characterData.factionReputation },
+            npcRelationships: {},
             flags: {},
             dialogueHistory: [],
             journal: []
@@ -353,6 +354,10 @@ export class GameEngine {
             currentNode: 'initial'
         };
 
+        if (this.currentPlayer.npcRelationships[npcId] === undefined) {
+            this.currentPlayer.npcRelationships[npcId] = 0;
+        }
+
         this.gameStats.npcsMet.add(npcId);
         this.statsManager.meetNPC(npcId);
         this.addJournalEntry(`Spoke with ${npcData.name}`, 'interaction');
@@ -439,6 +444,14 @@ export class GameEngine {
                     if (this.currentPlayer.factionReputation[faction] !== undefined) {
                         this.currentPlayer.factionReputation[faction] += effects[key][faction];
                     }
+                });
+            } else if (key === 'npcRelations') {
+                Object.keys(effects[key]).forEach(npc => {
+                    if (this.currentPlayer.npcRelationships[npc] === undefined) {
+                        this.currentPlayer.npcRelationships[npc] = 0;
+                    }
+                    this.currentPlayer.npcRelationships[npc] += effects[key][npc];
+                    this.currentPlayer.npcRelationships[npc] = Math.max(-10, Math.min(10, this.currentPlayer.npcRelationships[npc]));
                 });
             } else if (this.currentPlayer.stats[key] !== undefined) {
                 this.currentPlayer.stats[key] += effects[key];

@@ -426,6 +426,27 @@
             {
               "text": "Share a quiet toast",
               "nextNode": "simple_order",
+              "requirements": [],
+              "effects": {
+                "npcRelations": {
+                  "bartender": 1
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "informant": {
+      "name": "Shady Informant",
+      "description": "A figure lurking in the pub's shadows",
+      "dialogueTree": {
+        "initial": {
+          "text": "Keep your voice down. What do you want?",
+          "choices": [
+            {
+              "text": "Nothing right now.",
+              "nextNode": "polite_exit",
               "requirements": []
             }
           ]

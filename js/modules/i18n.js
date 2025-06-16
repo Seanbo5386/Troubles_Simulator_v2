@@ -70,6 +70,7 @@ class I18n {
             "morale": "Morale",
             "ptsd": "PTSD",
             "faction_rep": "Faction Relations",
+            "npc_rel": "NPC Relations",
             "inventory": "Inventory",
             "actions": "Actions",
             "empty": "(empty)",
@@ -124,6 +125,7 @@ class I18n {
             "british_soldier": "British Soldier",
             "uda_member": "UDA Member",
             "bartender": "Pub Owner",
+            "informant": "Informant",
             "journalist": "Journalist",
             "police_officer": "Police Officer",
             

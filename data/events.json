@@ -226,6 +226,10 @@
               "british_army": 3,
               "ira": -5,
               "uda": -3
+            },
+            "npcRelations": {
+              "informant": 2,
+              "ira_sympathizer": -2
             }
           },
           "consequence": "You cross a line that can never be uncrossed. The protection is real, but so is the price to your soul. You're safer, but you're also a traitor.",
@@ -239,6 +243,9 @@
             "factionReputation": {
               "ira": 2,
               "british_army": -3
+            },
+            "npcRelations": {
+              "informant": -2
             }
           },
           "consequence": "The informant pales and hurries away. You've maintained your integrity, but you've also made a dangerous enemy who knows your secrets.",
@@ -247,7 +254,10 @@
         {
           "text": "Listen but commit to nothing",
           "effects": {
-            "tension": 8
+            "tension": 8,
+            "npcRelations": {
+              "informant": -1
+            }
           },
           "consequence": "You nod noncommittally and excuse yourself. The informant watches you leave with calculating eyes. This conversation isn't over.",
           "nextNode": "location_hub"
