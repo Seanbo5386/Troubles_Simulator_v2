@@ -57,6 +57,7 @@ export class UIRenderer {
             
             // Background
             backgroundImage: document.getElementById('background-image'),
+            locationDisplay: document.getElementById('location-display'),
             
             // Modals
             settingsModal: document.getElementById('settings-modal'),
@@ -225,20 +226,25 @@ export class UIRenderer {
             this.setBackgroundImage(location.backgroundImage);
         }
 
-        // Render location description
+        // Clear main output
+        if (this.elements.output) {
+            this.elements.output.innerHTML = '';
+        }
+
+        // Render location description to dedicated display
         const locationHtml = `
-            <h2 class="text-3xl font-bold location-title mb-4">${location.name}</h2>
-            <p class="text-lg leading-relaxed mb-4">${location.description}</p>
+            <h2 class="text-3xl font-bold location-title mb-1">${location.name}</h2>
+            <p class="text-lg leading-relaxed">${location.description}</p>
         `;
 
-        this.renderText(locationHtml, this.elements.output);
+        this.renderText(locationHtml, this.elements.locationDisplay, { append: false });
 
         // Add environmental details
         if (location.environmentDetails && location.environmentDetails.length > 0) {
             const randomDetail = location.environmentDetails[
                 Math.floor(Math.random() * location.environmentDetails.length)
             ];
-            
+
             this.renderText(
                 `<p class="text-gray-300 italic mt-2">${randomDetail}</p>`,
                 this.elements.output,
@@ -791,6 +797,9 @@ export class UIRenderer {
         this.elements.characterName.textContent = '';
         this.elements.characterBackground.textContent = '';
         this.elements.currentLocation.textContent = '';
+        if (this.elements.locationDisplay) {
+            this.elements.locationDisplay.innerHTML = '';
+        }
         
         // Reset game stats
         this.elements.choicesCount.textContent = '0';

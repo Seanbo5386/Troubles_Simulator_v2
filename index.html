@@ -10,11 +10,10 @@
 </head>
 <body class="p-4 md:p-8">
     <div class="vignette"></div>
-    <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-4 gap-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         <!-- Main Content Column -->
-        <div class="xl:col-span-3 grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <div class="lg:col-span-2">
+        <div class="lg:col-span-2 space-y-6">
                 <header class="mb-6">
                     <h1 class="text-4xl font-bold mb-2 text-gray-100 border-b-2 border-yellow-400 pb-2">
                         Troubles Simulator
@@ -40,6 +39,7 @@
 
                 <main id="game-area" class="relative">
                     <div id="background-image" class="absolute inset-0 opacity-30 bg-cover bg-center transition-all duration-1000"></div>
+                    <div id="location-display" class="relative z-10 mb-4"></div>
                     <div id="output" class="relative z-10 h-[60vh] lg:h-[75vh] overflow-y-auto p-6 rounded-lg shadow-inner text-lg leading-relaxed glass-panel">
                         <!-- Game text will be rendered here -->
                     </div>
@@ -59,8 +59,8 @@
                 </main>
             </div>
 
-            <!-- Stats Column -->
-            <div class="space-y-6">
+            <!-- Sidebar -->
+            <div id="sidebar" class="space-y-6 lg:col-span-1">
                 <!-- Status Panel -->
                 <div id="stats-panel" class="glass-panel p-4">
                     <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="status">Status</h2>
@@ -113,11 +113,8 @@
                         <!-- Action buttons will be rendered here -->
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Journal Sidebar -->
-        <div id="journal-sidebar" class="space-y-6">
+        <!-- Journal and Info (Sidebar continuation) -->
             <div class="glass-panel p-4">
                 <h2 class="text-xl font-bold mb-3 border-b border-gray-600 pb-2" data-i18n="journal">Journal</h2>
                 <div id="journal-content" class="max-h-96 overflow-y-auto space-y-3">
