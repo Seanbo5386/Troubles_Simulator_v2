@@ -18,7 +18,14 @@ class TroublesSimulator {
             
             // Load all game data
             const gameData = await this.dataLoader.loadAllData();
-            
+
+            // Preload assets like images and audio
+            try {
+                await this.dataLoader.preloadAssets(gameData.locations);
+            } catch (preloadError) {
+                console.error('Asset preloading failed:', preloadError);
+            }
+
             // Initialize game engine
             this.gameEngine = new GameEngine(gameData);
             
