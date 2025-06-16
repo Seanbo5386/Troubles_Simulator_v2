@@ -575,7 +575,7 @@ export class UIRenderer {
         }
     }
 
-    showEnding(endingNode, player, sessionStats) {
+    showEnding(endingNode, player, sessionStats, achievements = []) {
         const modal = this.elements.endgameModal;
         if (!modal) return;
 
@@ -610,7 +610,19 @@ export class UIRenderer {
                     <p>Morale: ${player.stats.morale}</p>
                     <p>PTSD: ${player.stats.ptsd}</p>
                 </div>
+                <div>
+                    <h4 class="font-bold mb-2">Achievements Unlocked</h4>
+                    <ul class="list-disc list-inside text-sm">
+                        ${achievements.map(a => `<li>${a}</li>`).join('') || '<li>None</li>'}
+                    </ul>
+                </div>
             `;
+
+            if (achievements && achievements.length > 0) {
+                achievements.forEach(name => {
+                    this.showNotification(`Achievement unlocked: ${name}`, 'success');
+                });
+            }
         }
 
         // Play modal open sound

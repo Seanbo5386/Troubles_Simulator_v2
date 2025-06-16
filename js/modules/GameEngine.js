@@ -583,23 +583,44 @@ export class GameEngine {
     }
 
     addJournalEntry(objectiveText, type = 'general') {
-        const { ptsd = 0, tension = 0, morale = 100 } = this.currentPlayer?.stats || {};
+        const { ptsd = 0, tension = 0, morale = 100 } =
+            this.currentPlayer?.stats || {};
 
         let subjectiveText = objectiveText;
 
         if (tension > 70) {
+            const paranoia = [
+                "Someone's watching.",
+                "They're onto me.",
+                "Footsteps... or imagination?"
+            ];
             const words = objectiveText.replace(/[.!?]/g, '').split(/\s+/);
             subjectiveText = words.map(w => `${w}.`).join(' ');
-            subjectiveText += ' Can\'t think.';
+            subjectiveText +=
+                ' ' + paranoia[Math.floor(Math.random() * paranoia.length)];
+        } else if (tension > 40) {
+            const words = objectiveText.replace(/[.!?]/g, '').split(/\s+/);
+            subjectiveText = words.map(w => `${w}.`).join(' ');
+            subjectiveText += ' Can\'t sit still.';
         }
 
         if (ptsd > 50) {
-            const blurPhrases = ["...it's all a blur.", "...the sounds won't stop."];
-            subjectiveText += ' ' + blurPhrases[Math.floor(Math.random() * blurPhrases.length)];
+            const blurPhrases = [
+                "...it's all a blur.",
+                "...the sounds won't stop."
+            ];
+            subjectiveText +=
+                ' ' + blurPhrases[Math.floor(Math.random() * blurPhrases.length)];
         }
 
         if (morale < 30) {
-            subjectiveText += " Another day, another tragedy. What's the point?";
+            const hopeless = [
+                "Another day, another tragedy. What's the point?",
+                'Hope feels so far away.',
+                "I don't know how much longer I can do this."
+            ];
+            subjectiveText +=
+                ' ' + hopeless[Math.floor(Math.random() * hopeless.length)];
         }
 
         const entry = {
@@ -620,8 +641,10 @@ export class GameEngine {
         this.gameStats.endTime = Date.now();
 
         // Finalize statistics session
-        this.statsManager.endSession(endingNode.endingType);
+        const newAchievements = this.statsManager.endSession(endingNode.endingType);
         const sessionStats = this.statsManager.getSessionStatistics();
+
+        const achievementNames = this.statsManager.getAchievementNames(newAchievements);
 
         // Disable save button
         document.getElementById('save-btn').disabled = true;
@@ -630,7 +653,7 @@ export class GameEngine {
         this.audioManager.stopAmbientSound();
         
         // Show ending
-        this.uiRenderer.showEnding(endingNode, this.currentPlayer, sessionStats);
+        this.uiRenderer.showEnding(endingNode, this.currentPlayer, sessionStats, achievementNames);
     }
 
     saveGame() {
