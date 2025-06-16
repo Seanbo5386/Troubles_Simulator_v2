@@ -200,6 +200,9 @@ export class GameEngine {
         if (this.state === 'menu') {
             if (choice.characterId) {
                 this.startGame(choice.characterId);
+                if (choice.nextNode) {
+                    await this.processStoryNode(choice.nextNode);
+                }
                 return;
             }
 
