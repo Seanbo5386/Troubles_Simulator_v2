@@ -611,8 +611,10 @@ export class GameEngine {
         this.gameStats.endTime = Date.now();
 
         // Finalize statistics session
-        this.statsManager.endSession(endingNode.endingType);
+        const newAchievements = this.statsManager.endSession(endingNode.endingType);
         const sessionStats = this.statsManager.getSessionStatistics();
+
+        const achievementNames = this.statsManager.getAchievementNames(newAchievements);
 
         // Disable save button
         document.getElementById('save-btn').disabled = true;
@@ -621,7 +623,7 @@ export class GameEngine {
         this.audioManager.stopAmbientSound();
         
         // Show ending
-        this.uiRenderer.showEnding(endingNode, this.currentPlayer, sessionStats);
+        this.uiRenderer.showEnding(endingNode, this.currentPlayer, sessionStats, achievementNames);
     }
 
     saveGame() {

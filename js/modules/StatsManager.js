@@ -6,6 +6,29 @@ export class StatsManager {
         this.milestones = [];
     }
 
+    static ACHIEVEMENT_NAMES = {
+        first_game: 'First Steps',
+        decision_maker: 'Decision Maker',
+        hero: 'Hero',
+        survivor: 'Survivor',
+        explorer: 'Explorer',
+        witness: 'Witness',
+        all_endings: 'All Paths',
+        versatile: 'Versatile',
+        dedicated: 'Dedicated',
+        veteran: 'Veteran',
+        on_the_edge: 'On the Edge',
+        optimist: 'Optimist'
+    };
+
+    getAchievementName(id) {
+        return StatsManager.ACHIEVEMENT_NAMES[id] || id;
+    }
+
+    getAchievementNames(ids) {
+        return ids.map(id => this.getAchievementName(id));
+    }
+
     initializeSessionStats() {
         return {
             gameStartTime: null,
@@ -152,10 +175,11 @@ export class StatsManager {
         this.updateRecords();
         
         // Check achievements
-        this.checkAchievements();
-        
+        const newAchievements = this.checkAchievements();
+
         this.savePermanentStats();
         console.log('Stats session ended');
+        return newAchievements;
     }
 
     // Choice tracking
