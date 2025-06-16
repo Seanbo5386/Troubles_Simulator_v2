@@ -59,7 +59,9 @@ export class UIRenderer {
             
             // Modals
             settingsModal: document.getElementById('settings-modal'),
-            endgameModal: document.getElementById('endgame-modal')
+            endgameModal: document.getElementById('endgame-modal'),
+            glossaryModal: document.getElementById('glossary-modal'),
+            glossaryContent: document.getElementById('glossary-content')
         };
     }
 
@@ -523,6 +525,43 @@ export class UIRenderer {
 
     hideSettings() {
         const modal = this.elements.settingsModal;
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+        if (modal.trapFocusHandler) {
+            modal.removeEventListener('keydown', modal.trapFocusHandler);
+            modal.trapFocusHandler = null;
+        }
+        if (this.modalOpener) {
+            this.modalOpener.focus();
+            this.modalOpener = null;
+        }
+    }
+
+    showGlossary(glossary = {}) {
+        const modal = this.elements.glossaryModal;
+        const content = this.elements.glossaryContent;
+        if (!modal || !content) return;
+
+        content.innerHTML = '';
+        Object.values(glossary).forEach(entry => {
+            const div = document.createElement('div');
+            div.innerHTML = `
+                <h3 class="font-semibold mb-1">${entry.title}</h3>
+                <p>${entry.description}</p>
+            `;
+            content.appendChild(div);
+        });
+
+        this.playUISound('assets/audio/menu-open.mp3');
+        const opener = document.activeElement;
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        this.manageModalFocus(modal, opener);
+    }
+
+    hideGlossary() {
+        const modal = this.elements.glossaryModal;
         if (!modal) return;
         modal.classList.add('hidden');
         modal.setAttribute('aria-hidden', 'true');

@@ -45,7 +45,8 @@ export class DataLoader {
                 dialogueTrees,
                 events,
                 items,
-                endings
+                endings,
+                glossary
             ] = await Promise.all([
                 this.loadJSON('story-graph.json'),
                 this.loadJSON('characters.json'),
@@ -53,7 +54,8 @@ export class DataLoader {
                 this.loadJSON('dialogue-trees.json'),
                 this.loadJSON('events.json'),
                 this.loadJSON('items.json'),
-                this.loadJSON('endings.json')
+                this.loadJSON('endings.json'),
+                this.loadOptionalJSON('glossary.json')
             ]);
 
             if (endings) {
@@ -70,7 +72,8 @@ export class DataLoader {
                 locations,
                 dialogueTrees,
                 events,
-                items
+                items,
+                glossary
             };
         } catch (error) {
             console.error('Failed to load game data:', error);
