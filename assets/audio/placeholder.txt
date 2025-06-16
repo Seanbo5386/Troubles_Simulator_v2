@@ -1,11 +1,123 @@
-This directory is for ambient audio files.
-Add audio files like:
-- urban-tension.mp3
-- wind-barriers.mp3
-- loyalist-area.mp3
-- rural-helicopters.mp3
-- pub-chatter.mp3
-- urban-anxiety.mp3
-- desolation.mp3
-- military-checkpoint.mp3
-- border-tension.mp3
+AI Audio Generation Prompts for Troubles Simulator v2
+
+AMBIENT SOUNDSCAPES:
+
+1. urban-tension.mp3
+"Generate dark atmospheric urban ambience with distant sirens, footsteps on wet pavement, muffled shouting in the distance, helicopter rotors overhead, and occasional glass breaking. 1970s Belfast street atmosphere, tense and foreboding, low rumbling undertones."
+
+2. wind-barriers.mp3  
+"Create haunting wind sounds through concrete barriers and razor wire, echoing footsteps in narrow passages, distant metal clanging, and the oppressive hum of floodlights. Cold, institutional atmosphere of division."
+
+3. loyalist-area.mp3
+"Generate neighborhood ambience with Ulster Scots accents in background conversations, distant Orange parade drums, Union Jack flags flapping in wind, children playing in streets, and the occasional passing of armored vehicles."
+
+4. rural-helicopters.mp3
+"Peaceful Irish countryside with birds chirping, wind through trees, distant sheep bleating, interrupted by the menacing approach and departure of military helicopters. Contrast between natural beauty and surveillance."
+
+5. pub-chatter.mp3
+"Traditional Irish pub atmosphere with low conversations, clinking glasses, dart games, creaking floorboards, and an underlying tension where conversations stop when strangers enter. Acoustic guitar in background."
+
+6. urban-anxiety.mp3
+"Belfast city center with shop bells, car engines, pedestrian chatter, but underlying tension with security alarms in distance, quick footsteps, and the nervous energy of people constantly looking over shoulders."
+
+7. desolation.mp3
+"Post-explosion aftermath with settling debris, distant crying, emergency vehicle sirens approaching, crackling fires, and the eerie silence of destruction. Wind blowing through destroyed buildings."
+
+8. military-checkpoint.mp3
+"Military checkpoint with radio chatter, diesel engines idling, boots on gravel, stern military commands, metal barriers opening/closing, and the constant hum of surveillance equipment."
+
+9. border-tension.mp3
+"International border crossing with bureaucratic stamping, paper shuffling, stern questioning voices, vehicle searches, and the underlying tension of political division made manifest."
+
+MUSIC TRACKS:
+
+10. main-theme.mp3
+"Compose a haunting Irish folk melody with traditional instruments (tin whistle, fiddle, bodhrán) that starts hopeful but becomes increasingly dark and complex, representing the loss of innocence during The Troubles."
+
+11. character-themes.mp3
+"Create four distinct musical themes: 1) Melancholy piano for Catholic teen, 2) Bureaucratic strings for Protestant civil servant, 3) Objective orchestral for foreign reporter, 4) Tense drums for IRA volunteer."
+
+12. tension-escalation.mp3
+"Build suspenseful music that starts with single piano notes and gradually adds discordant strings, building to climax with full orchestra. Represents moral choices and their consequences."
+
+SOUND EFFECTS:
+
+13. violence-impact.mp3
+"Generate realistic but not gratuitous sound effects for violence: muffled impacts, breaking glass, distant explosions, gunshots echoing off buildings, and aftermath silence."
+
+14. emotional-stings.mp3
+"Create emotional musical stings for dramatic moments: PTSD flashback sounds, moral dilemma chords, victory/defeat themes, and character revelation moments."
+
+UI & INTERACTION SOUND EFFECTS:
+
+15. button-hover.mp3
+"Subtle paper rustling or soft mechanical click when hovering over buttons/choices. Should feel like documents or official papers being handled, fitting the serious tone."
+
+16. button-click.mp3
+"Firm but muted click sound, like stamping official documents or typewriter keys. Professional, bureaucratic feeling without being jarring."
+
+17. choice-confirm.mp3
+"Decisive paper signing sound or folder closing. Represents the weight of decisions made - should have finality to it."
+
+18. choice-consequence.mp3
+"Subtle tension chord or single piano note when consequences are revealed. Should match the emotional weight of the outcome."
+
+19. location-transition.mp3
+"Soft whoosh or fade with distant city sounds bleeding in. Like walking through a door or turning a corner into a new environment."
+
+20. character-select.mp3
+"Page turning or photograph placement sound. Represents choosing which character's story to follow."
+
+21. stats-increase.mp3
+"Subtle ascending musical notes or soft chime. Should feel meaningful but not celebratory, given the serious subject matter."
+
+22. stats-decrease.mp3
+"Descending musical notes or soft discordant tone. Should convey loss or trauma without being dramatic."
+
+23. inventory-pickup.mp3
+"Soft rustling of pocket items, paper crinkling, or fabric movement. Should feel realistic and period-appropriate."
+
+24. inventory-use.mp3
+"Contextual sounds: paper unfolding for documents, metal clink for keys, etc. Should match the specific item being used."
+
+25. dialogue-advance.mp3
+"Very subtle typewriter key tap or page turn. Should be barely noticeable but help with reading rhythm."
+
+26. notification-alert.mp3
+"Soft but urgent sound like distant church bell or radio static clearing. Should get attention without being alarming."
+
+27. save-game.mp3
+"Filing cabinet drawer closing or book cover shutting. Represents preserving the story/progress."
+
+28. load-game.mp3
+"File folder opening or book pages rustling. Represents returning to saved story."
+
+29. menu-open.mp3
+"Soft paper unfurling or document folder opening. Should feel like accessing important information."
+
+30. menu-close.mp3
+"Papers gathering together or folder closing. Clean, organized feeling."
+
+31. error-sound.mp3
+"Muted negative tone, like a typewriter bell or soft buzzer. Should indicate mistake without being harsh."
+
+32. success-sound.mp3
+"Warm but subtle positive tone. Single piano note or soft string. Should acknowledge achievement without celebration."
+
+33. tension-build.mp3
+"Gradually increasing heartbeat sound or subtle string tension. For moments when stress/danger is building."
+
+34. flashback-trigger.mp3
+"Echo effect with distant sounds bleeding in. For PTSD/memory flashback moments."
+
+35. faction-reputation-change.mp3
+"Contextual sounds: radio static for official changes, whispers for street reputation, etc."
+
+TECHNICAL NOTES:
+- All UI sounds should be 0.5-2 seconds maximum
+- Volume should be subtle (20-40% of ambient levels)
+- No jarring or video-game-like sounds that break immersion
+- Consider having slightly different versions of common sounds to avoid repetition
+- All effects should feel period-appropriate (1970s-1990s)
+
+Note: All audio should reflect the serious historical nature of The Troubles period (1960s-1990s Northern Ireland) with respect for victims and historical accuracy.

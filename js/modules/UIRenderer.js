@@ -1,11 +1,13 @@
 import { i18n } from './i18n.js';
 
 export class UIRenderer {
-    constructor() {
+    constructor(audioManager = null) {
         this.elements = {};
         this.textSpeed = 'medium';
         this.isTyping = false;
         this.currentTypewriter = null;
+        this.audioManager = audioManager;
+        this.previousStats = { tension: 0, morale: 0, ptsd: 0 };
     }
 
     async init() {
@@ -211,6 +213,9 @@ export class UIRenderer {
     }
 
     renderLocation(location, player) {
+        // Play location transition sound
+        this.playUISound('assets/audio/location-transition.mp3', 0.4);
+        
         // Update background image
         if (location.backgroundImage) {
             this.setBackgroundImage(location.backgroundImage);
@@ -310,8 +315,17 @@ export class UIRenderer {
                 }
             });
 
+            // Add hover sound effect
+            button.addEventListener('mouseenter', () => {
+                if (button.disabled) return;
+                this.playUISound('assets/audio/button-hover.mp3');
+            });
+
             button.addEventListener('click', () => {
                 if (button.disabled) return;
+                
+                // Play button click sound
+                this.playUISound('assets/audio/button-click.mp3');
                 
                 // Disable all choice buttons to prevent double-clicking
                 this.disableAllChoices();
@@ -338,17 +352,33 @@ export class UIRenderer {
     updatePlayerStats(player) {
         if (!player || !player.stats) return;
 
+        const currentStats = {
+            tension: player.stats.tension || 0,
+            morale: player.stats.morale || 0,
+            ptsd: player.stats.ptsd || 0
+        };
+
+        // Play sound effects for stat changes
+        if (currentStats.tension > this.previousStats.tension || currentStats.ptsd > this.previousStats.ptsd) {
+            this.playUISound('assets/audio/stats-decrease.mp3', 0.4);
+        } else if (currentStats.morale > this.previousStats.morale) {
+            this.playUISound('assets/audio/stats-increase.mp3', 0.4);
+        }
+
         // Update tension
-        this.elements.tensionLevel.textContent = player.stats.tension || 0;
-        this.updateProgressBar(this.elements.tensionBar, player.stats.tension || 0, 100);
+        this.elements.tensionLevel.textContent = currentStats.tension;
+        this.updateProgressBar(this.elements.tensionBar, currentStats.tension, 100);
 
         // Update morale
-        this.elements.moraleLevel.textContent = player.stats.morale || 0;
-        this.updateProgressBar(this.elements.moraleBar, player.stats.morale || 0, 100);
+        this.elements.moraleLevel.textContent = currentStats.morale;
+        this.updateProgressBar(this.elements.moraleBar, currentStats.morale, 100);
 
         // Update PTSD
-        this.elements.ptsdLevel.textContent = player.stats.ptsd || 0;
-        this.updateProgressBar(this.elements.ptsdBar, player.stats.ptsd || 0, 100);
+        this.elements.ptsdLevel.textContent = currentStats.ptsd;
+        this.updateProgressBar(this.elements.ptsdBar, currentStats.ptsd, 100);
+
+        // Store current stats for next comparison
+        this.previousStats = { ...currentStats };
 
         // Update faction reputation
         this.updateFactionReputation(player.factionReputation);
@@ -419,6 +449,9 @@ export class UIRenderer {
                 li.className = 'cursor-pointer hover:text-yellow-400';
                 
                 li.addEventListener('click', () => {
+                    // Play inventory item click sound
+                    this.playUISound('assets/audio/inventory-use.mp3');
+                    
                     document.dispatchEvent(new CustomEvent('itemClicked', {
                         detail: { itemId }
                     }));
@@ -518,11 +551,18 @@ export class UIRenderer {
             `;
         }
 
+        // Play modal open sound
+        this.playUISound('assets/audio/menu-open.mp3');
+        
         modal.classList.remove('hidden');
     }
 
     closeAllModals() {
         const modals = document.querySelectorAll('.modal');
+        if (modals.length > 0) {
+            // Play modal close sound
+            this.playUISound('assets/audio/menu-close.mp3');
+        }
         modals.forEach(modal => {
             modal.classList.add('hidden');
         });
@@ -530,6 +570,15 @@ export class UIRenderer {
 
     // Notifications
     showNotification(message, type = 'info') {
+        // Play notification sound
+        if (type === 'success') {
+            this.playUISound('assets/audio/success-sound.mp3');
+        } else if (type === 'error') {
+            this.playUISound('assets/audio/error-sound.mp3');
+        } else {
+            this.playUISound('assets/audio/notification-alert.mp3');
+        }
+        
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
         notification.textContent = message;
@@ -612,5 +661,16 @@ export class UIRenderer {
         this.elements.locationsCount.textContent = '0';
         this.elements.npcsCount.textContent = '0';
         this.elements.eventsCount.textContent = '0';
+    }
+
+    // UI Sound Effects
+    playUISound(soundPath, volume = 0.3) {
+        if (this.audioManager && this.audioManager.isEnabled) {
+            this.audioManager.playEffectSound(soundPath, volume);
+        }
+    }
+
+    setAudioManager(audioManager) {
+        this.audioManager = audioManager;
     }
 }

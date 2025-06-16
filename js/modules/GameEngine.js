@@ -48,6 +48,9 @@ export class GameEngine {
             await this.audioManager.init();
             await this.saveManager.init();
             
+            // Connect audio manager to UI renderer
+            this.uiRenderer.setAudioManager(this.audioManager);
+            
             // Set up event listeners
             this.setupEventListeners();
             
