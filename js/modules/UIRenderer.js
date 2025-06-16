@@ -478,13 +478,17 @@ export class UIRenderer {
     addJournalEntry(entry) {
         const entryElement = document.createElement('div');
         entryElement.className = `journal-entry ${entry.type}`;
-        
+
         const timeString = new Date(entry.timestamp).toLocaleTimeString();
+        const subjectiveText = entry.text;
+
         entryElement.innerHTML = `
             <div class="text-xs text-gray-400 mb-1">${timeString} - ${entry.location}</div>
-            <div class="text-sm">${entry.text}</div>
+            <div class="text-sm">${subjectiveText}</div>
         `;
-        
+
+        entryElement.title = entry.objectiveText;
+
         this.elements.journalContent.appendChild(entryElement);
         this.scrollToBottom(this.elements.journalContent);
     }
