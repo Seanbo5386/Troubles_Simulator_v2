@@ -3,21 +3,21 @@
     "id": "ending_exile",
     "type": "ending",
     "endingType": "exile",
-    "text": "The weight of constant suspicion and fear becomes too much. You gather what few belongings you can carry and slip away in the night, leaving behind everything you once knew. The boat to Liverpool carries you toward an uncertain future, but away from the endless cycle of violence. You are alive, but forever marked by what you've witnessed.",
+    "text": "Unable to bear the constant suspicion, you pack what little you own and vanish across the sea. The shoreline fades behind you, taking with it friends, foes, and a piece of your soul. In exile you survive, but every news report drags you back to the streets you fled.",
     "choices": []
   },
   "ending_martyr": {
     "id": "ending_martyr",
     "type": "ending",
     "endingType": "martyr",
-    "text": "Your final act of defiance echoes through the streets long after the gunfire fades. The murals painted in your memory tell a story of someone who stood for their beliefs, no matter the cost. In death, you become a symbol - though whether of hope or tragedy depends on who tells your story.",
+    "text": "Your last stand ignites whispers and songs long after the shooting stops. To some you're a hero, to others a cautionary tale, but no one forgets the conviction that carried you to the end.",
     "choices": []
   },
   "ending_survivor": {
     "id": "ending_survivor",
     "type": "ending",
     "endingType": "survivor",
-    "text": "Against all odds, you've managed to navigate the treacherous currents of sectarian violence without losing yourself completely. The scars run deep - both visible and hidden - but you endure. Perhaps there's wisdom in survival, and hope that the next generation might find a different path.",
+    "text": "Through compromise, cunning, or sheer luck, you outlast the bloodshed. The scars remain, yet so does the faint hope that tomorrow will see fewer coffins and more conversations.",
     "choices": []
   }
 }

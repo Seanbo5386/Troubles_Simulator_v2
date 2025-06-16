@@ -16,10 +16,14 @@
       "british_army": -1,
       "civilians": 1
     },
-    "background": "Growing up on the Falls Road, you've learned to keep your head down and your mouth shut. The constant presence of soldiers and the whispered stories of neighbors who 'disappeared' have taught you that survival often means invisibility."
+    "background": "Raised amid nightly patrols and whispered warnings, you've memorized every alley and escape route on the Falls Road. Friends have vanished without explanation, teaching you early that trust can be fatal.",
+    "uniqueKnowledge": [
+      "knows_back_alleys",
+      "reads_graffitti_codes"
+    ]
   },
   "protestant_civil": {
-    "id": "protestant_civil", 
+    "id": "protestant_civil",
     "name": "Protestant Civil Servant",
     "description": "Protestant civil servant",
     "startLocation": "peace_line",
@@ -28,18 +32,24 @@
       "morale": 80,
       "ptsd": 0
     },
-    "startingInventory": ["government_id"],
+    "startingInventory": [
+      "government_id"
+    ],
     "factionReputation": {
       "ira": -2,
       "uda": 0,
       "british_army": 1,
       "civilians": 0
     },
-    "background": "Your job at the city council has given you a unique perspective on the bureaucracy of conflict. You've seen how political decisions play out in real lives, and you carry the weight of knowing how the system works - and fails."
+    "background": "Working in the city council means navigating mountains of paperwork and political favors. You've seen how housing lists and permits can become weapons, and you know which forms go missing.",
+    "uniqueKnowledge": [
+      "bureaucratic_shortcuts",
+      "access_to_records"
+    ]
   },
   "foreign_reporter": {
     "id": "foreign_reporter",
-    "name": "Foreign Reporter", 
+    "name": "Foreign Reporter",
     "description": "Foreign reporter",
     "startLocation": "belfast_city_centre",
     "startingStats": {
@@ -47,32 +57,46 @@
       "morale": 85,
       "ptsd": 0
     },
-    "startingInventory": ["press_pass", "notebook"],
+    "startingInventory": [
+      "press_pass",
+      "notebook"
+    ],
     "factionReputation": {
       "ira": 0,
-      "uda": 0, 
+      "uda": 0,
       "british_army": 0,
       "civilians": 0
     },
-    "background": "Armed with a press pass and an outsider's perspective, you've come to document the human cost of the conflict. Your neutrality is both your protection and your burden - everyone wants to tell you their story, but few trust your motives."
+    "background": "Armed with a press pass and an outsider's eye, you're determined to capture the human stories behind the headlines. Everyone wants to bend your ear, yet no one fully trusts you.",
+    "uniqueKnowledge": [
+      "press_contacts",
+      "interview_techniques"
+    ]
   },
   "ira_volunteer": {
     "id": "ira_volunteer",
     "name": "IRA Volunteer",
-    "description": "IRA volunteer lying low", 
+    "description": "IRA volunteer lying low",
     "startLocation": "countryside_safehouse",
     "startingStats": {
       "tension": 5,
       "morale": 70,
       "ptsd": 10
     },
-    "startingInventory": ["coded_message", "fake_id"],
+    "startingInventory": [
+      "coded_message",
+      "fake_id"
+    ],
     "factionReputation": {
       "ira": 2,
       "uda": -4,
       "british_army": -3,
       "civilians": -1
     },
-    "background": "The safe house feels less safe each day. Your face is known to the security forces, and every knock at the door could be your last. The cause that once burned bright in your heart now competes with the simple desire to see another sunrise."
+    "background": "You once shouted slogans with conviction, but months in hiding have worn you raw. Your network of safe houses is shrinking, and paranoia competes with devotion to the cause.",
+    "uniqueKnowledge": [
+      "code_phrases",
+      "safehouse_locations"
+    ]
   }
 }

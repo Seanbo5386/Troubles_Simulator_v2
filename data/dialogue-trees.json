@@ -13,7 +13,7 @@
               "requirements": []
             },
             {
-              "text": "Any advice for staying safe?", 
+              "text": "Any advice for staying safe?",
               "nextNode": "safety_advice",
               "requirements": []
             },
@@ -21,6 +21,28 @@
               "text": "I'll be careful. Thanks.",
               "nextNode": "polite_exit",
               "requirements": []
+            },
+            {
+              "text": "Show a family photo",
+              "nextNode": "shared_mourning",
+              "requirements": [
+                {
+                  "type": "inventory",
+                  "key": "old_photograph",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "text": "Speak in local slang",
+              "nextNode": "trusted_local",
+              "requirements": [
+                {
+                  "type": "character",
+                  "key": "id",
+                  "value": "catholic_teen"
+                }
+              ]
             }
           ]
         },
@@ -29,7 +51,7 @@
           "choices": [
             {
               "text": "Do you know who was responsible?",
-              "nextNode": "blame_game", 
+              "nextNode": "blame_game",
               "requirements": []
             },
             {
@@ -53,13 +75,33 @@
             },
             {
               "text": "Thanks for the warning.",
-              "nextNode": "grateful_exit", 
+              "nextNode": "grateful_exit",
               "requirements": []
             }
           ],
           "effects": {
             "tension": 1
           }
+        },
+        "shared_mourning": {
+          "text": "The resident studies the photo and nods. 'We all have someone we've lost,' they say quietly.",
+          "choices": [
+            {
+              "text": "Thanks for understanding.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
+        },
+        "trusted_local": {
+          "text": "Hearing the slang, they relax a little. 'Alright, you're one of us then.'",
+          "choices": [
+            {
+              "text": "Any news from the street?",
+              "nextNode": "recent_events",
+              "requirements": []
+            }
+          ]
         }
       }
     },
@@ -84,6 +126,17 @@
               "text": "The situation is complicated.",
               "nextNode": "diplomatic_response",
               "requirements": []
+            },
+            {
+              "text": "Use a coded phrase",
+              "nextNode": "coded_exchange",
+              "requirements": [
+                {
+                  "type": "inventory",
+                  "key": "coded_message",
+                  "value": true
+                }
+              ]
             }
           ]
         },
@@ -112,6 +165,21 @@
             },
             "tension": 2
           }
+        },
+        "coded_exchange": {
+          "text": "Their eyes widen in recognition. 'You know more than you let on,' they whisper.",
+          "choices": [
+            {
+              "text": "I want in.",
+              "nextNode": "recruitment_pitch",
+              "requirements": []
+            },
+            {
+              "text": "Just passing a message.",
+              "nextNode": "neutral_response",
+              "requirements": []
+            }
+          ]
         }
       }
     },
@@ -136,6 +204,28 @@
               "text": "Am I in some kind of trouble?",
               "nextNode": "nervous_response",
               "requirements": []
+            },
+            {
+              "text": "I'm press. Here's my pass.",
+              "nextNode": "press_priority",
+              "requirements": [
+                {
+                  "type": "inventory",
+                  "key": "press_pass",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "text": "Show government credentials",
+              "nextNode": "civil_service_pass",
+              "requirements": [
+                {
+                  "type": "inventory",
+                  "key": "government_id",
+                  "value": true
+                }
+              ]
             }
           ]
         },
@@ -164,11 +254,31 @@
               "british_army": -1
             }
           }
+        },
+        "press_priority": {
+          "text": "The soldier glances at your pass and motions you through with barely a look.",
+          "choices": [
+            {
+              "text": "Move along quickly",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
+        },
+        "civil_service_pass": {
+          "text": "'Sorry, sir/madam,' he says, suddenly respectful. 'Didn't realize.'",
+          "choices": [
+            {
+              "text": "Ask about patrol plans",
+              "nextNode": "probe_information",
+              "requirements": []
+            }
+          ]
         }
       }
     },
     "uda_member": {
-      "name": "UDA Member", 
+      "name": "UDA Member",
       "description": "A hard-faced individual with tattoos visible under rolled sleeves",
       "dialogueTree": {
         "initial": {
@@ -181,7 +291,7 @@
             },
             {
               "text": "I belong here as much as anyone.",
-              "nextNode": "defiant_response", 
+              "nextNode": "defiant_response",
               "requirements": []
             },
             {
@@ -235,6 +345,17 @@
               "text": "Heard anything interesting lately?",
               "nextNode": "fishing_for_info",
               "requirements": []
+            },
+            {
+              "text": "Show an old photograph",
+              "nextNode": "nostalgic_talk",
+              "requirements": [
+                {
+                  "type": "inventory",
+                  "key": "old_photograph",
+                  "value": true
+                }
+              ]
             }
           ]
         },
@@ -295,6 +416,16 @@
             {
               "text": "Fair enough.",
               "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
+        },
+        "nostalgic_talk": {
+          "text": "The barman squints at the picture and sighs. 'Those were better days.'",
+          "choices": [
+            {
+              "text": "Share a quiet toast",
+              "nextNode": "simple_order",
               "requirements": []
             }
           ]
