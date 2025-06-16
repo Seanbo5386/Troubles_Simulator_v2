@@ -147,9 +147,9 @@
     </div>
 
     <!-- Settings Modal -->
-    <div id="settings-modal" class="modal hidden">
-        <div class="modal-content glass-panel p-6 max-w-md mx-auto mt-20">
-            <h2 class="text-2xl font-bold mb-4" data-i18n="settings">Settings</h2>
+    <div id="settings-modal" class="modal hidden" aria-hidden="true" tabindex="-1">
+        <div class="modal-content glass-panel p-6 max-w-md mx-auto mt-20" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+            <h2 id="settings-title" class="text-2xl font-bold mb-4" data-i18n="settings">Settings</h2>
             <div class="space-y-4">
                 <div>
                     <label class="block mb-2" data-i18n="master_volume">Master Volume</label>
@@ -181,8 +181,8 @@
     </div>
 
     <!-- End Game Modal -->
-    <div id="endgame-modal" class="modal hidden">
-        <div class="modal-content glass-panel p-8 max-w-2xl mx-auto mt-12">
+    <div id="endgame-modal" class="modal hidden" aria-hidden="true" tabindex="-1">
+        <div class="modal-content glass-panel p-8 max-w-2xl mx-auto mt-12" role="dialog" aria-modal="true" aria-labelledby="ending-title">
             <h2 id="ending-title" class="text-3xl font-bold mb-4"></h2>
             <div id="ending-content" class="mb-6"></div>
             <div id="final-stats" class="grid grid-cols-2 gap-4 mb-6 text-sm">

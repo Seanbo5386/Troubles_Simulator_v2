@@ -8,6 +8,7 @@ export class UIRenderer {
         this.currentTypewriter = null;
         this.audioManager = audioManager;
         this.previousStats = { tension: 0, morale: 0, ptsd: 0 };
+        this.modalOpener = null;
     }
 
     async init() {
@@ -301,6 +302,7 @@ export class UIRenderer {
             button.className = 'choice-btn';
             button.textContent = choice.text;
             button.disabled = choice.available === false;
+            button.setAttribute('aria-disabled', button.disabled ? 'true' : 'false');
             
             // Add accessibility attributes
             button.setAttribute('role', 'button');
@@ -345,6 +347,7 @@ export class UIRenderer {
         choiceButtons.forEach(btn => {
             btn.disabled = true;
             btn.style.opacity = '0.5';
+            btn.setAttribute('aria-disabled', 'true');
         });
     }
 
@@ -506,11 +509,27 @@ export class UIRenderer {
 
     // Modal management
     showSettings() {
-        this.elements.settingsModal?.classList.remove('hidden');
+        const modal = this.elements.settingsModal;
+        if (!modal) return;
+        const opener = document.activeElement;
+        modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        this.manageModalFocus(modal, opener);
     }
 
     hideSettings() {
-        this.elements.settingsModal?.classList.add('hidden');
+        const modal = this.elements.settingsModal;
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.setAttribute('aria-hidden', 'true');
+        if (modal.trapFocusHandler) {
+            modal.removeEventListener('keydown', modal.trapFocusHandler);
+            modal.trapFocusHandler = null;
+        }
+        if (this.modalOpener) {
+            this.modalOpener.focus();
+            this.modalOpener = null;
+        }
     }
 
     showEnding(endingNode, player, sessionStats) {
@@ -553,8 +572,38 @@ export class UIRenderer {
 
         // Play modal open sound
         this.playUISound('assets/audio/menu-open.mp3');
-        
+
+        const opener = document.activeElement;
         modal.classList.remove('hidden');
+        modal.setAttribute('aria-hidden', 'false');
+        this.manageModalFocus(modal, opener);
+    }
+
+    manageModalFocus(modal, opener) {
+        if (!modal) return;
+        this.modalOpener = opener || null;
+
+        const focusableSelectors = 'a[href], button:not([disabled]), textarea, input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        const focusable = Array.from(modal.querySelectorAll(focusableSelectors));
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        const trapFocus = (e) => {
+            if (e.key === 'Tab') {
+                if (e.shiftKey && document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && document.activeElement === last) {
+                    e.preventDefault();
+                    first.focus();
+                }
+            }
+        };
+
+        modal.trapFocusHandler = trapFocus;
+        modal.addEventListener('keydown', trapFocus);
+        first.focus();
     }
 
     closeAllModals() {
@@ -565,7 +614,17 @@ export class UIRenderer {
         }
         modals.forEach(modal => {
             modal.classList.add('hidden');
+            modal.setAttribute('aria-hidden', 'true');
+            if (modal.trapFocusHandler) {
+                modal.removeEventListener('keydown', modal.trapFocusHandler);
+                modal.trapFocusHandler = null;
+            }
         });
+
+        if (this.modalOpener) {
+            this.modalOpener.focus();
+            this.modalOpener = null;
+        }
     }
 
     // Notifications
