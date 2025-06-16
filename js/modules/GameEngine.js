@@ -573,15 +573,35 @@ export class GameEngine {
         return actions;
     }
 
-    addJournalEntry(text, type = 'general') {
+    addJournalEntry(objectiveText, type = 'general') {
+        const { ptsd = 0, tension = 0, morale = 100 } = this.currentPlayer?.stats || {};
+
+        let subjectiveText = objectiveText;
+
+        if (tension > 70) {
+            const words = objectiveText.replace(/[.!?]/g, '').split(/\s+/);
+            subjectiveText = words.map(w => `${w}.`).join(' ');
+            subjectiveText += ' Can\'t think.';
+        }
+
+        if (ptsd > 50) {
+            const blurPhrases = ["...it's all a blur.", "...the sounds won't stop."];
+            subjectiveText += ' ' + blurPhrases[Math.floor(Math.random() * blurPhrases.length)];
+        }
+
+        if (morale < 30) {
+            subjectiveText += " Another day, another tragedy. What's the point?";
+        }
+
         const entry = {
             id: Date.now() + Math.random(),
-            text,
+            text: subjectiveText,
+            objectiveText,
             type,
             timestamp: Date.now(),
             location: this.currentPlayer.location
         };
-        
+
         this.currentPlayer.journal.push(entry);
         this.uiRenderer.addJournalEntry(entry);
     }
