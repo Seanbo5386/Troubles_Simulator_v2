@@ -12,12 +12,14 @@ export class UIRenderer {
     }
 
     async init() {
+        console.debug('UIRenderer.init');
         this.cacheElements();
         this.setupEventListeners();
         console.log('UI Renderer initialized');
     }
 
     cacheElements() {
+        console.debug('UIRenderer.cacheElements');
         this.elements = {
             output: document.getElementById('output'),
             choicesContainer: document.getElementById('choices-container'),
@@ -89,6 +91,7 @@ export class UIRenderer {
     }
 
     handleTextInput() {
+        console.debug('UIRenderer.handleTextInput');
         const input = this.elements.promptInput.value.trim();
         if (!input) return;
 
@@ -102,6 +105,7 @@ export class UIRenderer {
 
     // Text rendering with typewriter effect
     async renderText(text, container, options = {}) {
+        console.debug('UIRenderer.renderText', { text, options });
         if (!container) return;
 
         const {
@@ -131,6 +135,7 @@ export class UIRenderer {
     }
 
     async typewriterEffect(text, element, speed) {
+        console.debug('UIRenderer.typewriterEffect', { text, speed });
         this.isTyping = true;
         this.currentTypewriter = { cancelled: false };
         
@@ -158,6 +163,7 @@ export class UIRenderer {
     }
 
     cancelTypewriter() {
+        console.debug('UIRenderer.cancelTypewriter');
         if (this.currentTypewriter) {
             this.currentTypewriter.cancelled = true;
         }
@@ -173,6 +179,7 @@ export class UIRenderer {
     }
 
     setTextSpeed(speed) {
+        console.debug('UIRenderer.setTextSpeed', speed);
         this.textSpeed = speed;
     }
 
@@ -186,6 +193,7 @@ export class UIRenderer {
 
     // Story rendering methods
     showIntroduction(introNode) {
+        console.debug('UIRenderer.showIntroduction', introNode);
         this.renderText(introNode.text, this.elements.output, {
             className: 'text-lg leading-relaxed mb-6'
         });
@@ -194,6 +202,7 @@ export class UIRenderer {
     }
 
     renderStoryNode(node) {
+        console.debug('UIRenderer.renderStoryNode', node);
         this.renderText(node.text, this.elements.output, {
             className: 'story-text mb-4'
         });
@@ -204,6 +213,7 @@ export class UIRenderer {
     }
 
     renderCharacterSelection(node, characters) {
+        console.debug('UIRenderer.renderCharacterSelection', { node, characters });
         this.renderText(node.text, this.elements.output, {
             className: 'text-xl font-bold mb-4'
         });
@@ -218,6 +228,7 @@ export class UIRenderer {
     }
 
     renderLocation(location, player) {
+        console.debug('UIRenderer.renderLocation', { location, player });
         // Play location transition sound
         this.playUISound('assets/audio/location-transition.mp3', 0.4);
         
@@ -257,6 +268,7 @@ export class UIRenderer {
     }
 
     renderLocationHub(location, availableActions, player) {
+        console.debug('UIRenderer.renderLocationHub', { location, availableActions });
         this.renderLocation(location, player);
         
         // Render available actions as choices
@@ -264,6 +276,7 @@ export class UIRenderer {
     }
 
     renderDialogue(dialogueData) {
+        console.debug('UIRenderer.renderDialogue', dialogueData);
         const { npcData, currentNode } = dialogueData;
         const dialogueNode = npcData.dialogueTree[currentNode];
         
@@ -287,6 +300,7 @@ export class UIRenderer {
     }
 
     renderEvent(event) {
+        console.debug('UIRenderer.renderEvent', event);
         const eventHtml = `
             <div class="event-container bg-red-900 border-l-4 border-red-400 p-4 rounded-r-lg mb-4">
                 <h3 class="font-bold text-red-300 mb-2">${event.title}</h3>
@@ -302,6 +316,7 @@ export class UIRenderer {
     }
 
     renderChoices(choices, context = 'story') {
+        console.debug('UIRenderer.renderChoices', { choices, context });
         if (!choices || choices.length === 0) return;
 
         this.elements.choicesContainer.innerHTML = '';
@@ -352,6 +367,7 @@ export class UIRenderer {
     }
 
     disableAllChoices() {
+        console.debug('UIRenderer.disableAllChoices');
         const choiceButtons = this.elements.choicesContainer.querySelectorAll('.choice-btn');
         choiceButtons.forEach(btn => {
             btn.disabled = true;
@@ -362,6 +378,7 @@ export class UIRenderer {
 
     // Stats rendering
     updatePlayerStats(player) {
+        console.debug('UIRenderer.updatePlayerStats', player);
         if (!player || !player.stats) return;
 
         const currentStats = {
@@ -407,12 +424,14 @@ export class UIRenderer {
     }
 
     updateProgressBar(barElement, value, max) {
+        console.debug('UIRenderer.updateProgressBar', { value, max });
         if (!barElement) return;
         const percentage = Math.max(0, Math.min(100, (value / max) * 100));
         barElement.style.width = `${percentage}%`;
     }
 
     updateFactionReputation(factionRep) {
+        console.debug('UIRenderer.updateFactionReputation', factionRep);
         if (!factionRep || !this.elements.factionList) return;
 
         this.elements.factionList.innerHTML = '';
@@ -448,6 +467,7 @@ export class UIRenderer {
     }
 
     updateNpcRelationships(npcRel) {
+        console.debug('UIRenderer.updateNpcRelationships', npcRel);
         if (!npcRel || !this.elements.npcRelationsList) return;
 
         this.elements.npcRelationsList.innerHTML = '';
@@ -466,6 +486,7 @@ export class UIRenderer {
     }
 
     updateInventory(inventory) {
+        console.debug('UIRenderer.updateInventory', inventory);
         if (!inventory || !this.elements.inventoryList) return;
 
         this.elements.inventoryList.innerHTML = '';
@@ -496,6 +517,7 @@ export class UIRenderer {
     }
 
     updateGameStats(gameStats) {
+        console.debug('UIRenderer.updateGameStats', gameStats);
         if (!gameStats) return;
 
         this.elements.choicesCount.textContent = gameStats.choicesMade || 0;
@@ -506,6 +528,7 @@ export class UIRenderer {
 
     // Journal methods
     addJournalEntry(entry) {
+        console.debug('UIRenderer.addJournalEntry', entry);
         const entryElement = document.createElement('div');
         entryElement.className = `journal-entry ${entry.type}`;
 
@@ -524,12 +547,14 @@ export class UIRenderer {
     }
 
     showJournal() {
+        console.debug('UIRenderer.showJournal');
         // This could open a modal or expand the journal sidebar
         this.elements.journalContent.scrollIntoView({ behavior: 'smooth' });
     }
 
     // Background and atmosphere
     setBackgroundImage(imageSrc) {
+        console.debug('UIRenderer.setBackgroundImage', imageSrc);
         if (!this.elements.backgroundImage) return;
         
         this.elements.backgroundImage.style.backgroundImage = `url(${imageSrc})`;
@@ -543,6 +568,7 @@ export class UIRenderer {
 
     // Modal management
     showSettings() {
+        console.debug('UIRenderer.showSettings');
         const modal = this.elements.settingsModal;
         if (!modal) return;
         const opener = document.activeElement;
@@ -552,6 +578,7 @@ export class UIRenderer {
     }
 
     hideSettings() {
+        console.debug('UIRenderer.hideSettings');
         const modal = this.elements.settingsModal;
         if (!modal) return;
         modal.classList.add('hidden');
@@ -567,6 +594,7 @@ export class UIRenderer {
     }
 
     showGlossary(glossary = {}) {
+        console.debug('UIRenderer.showGlossary');
         const modal = this.elements.glossaryModal;
         const content = this.elements.glossaryContent;
         if (!modal || !content) return;
@@ -589,6 +617,7 @@ export class UIRenderer {
     }
 
     hideGlossary() {
+        console.debug('UIRenderer.hideGlossary');
         const modal = this.elements.glossaryModal;
         if (!modal) return;
         modal.classList.add('hidden');
@@ -604,6 +633,7 @@ export class UIRenderer {
     }
 
     showEnding(endingNode, player, sessionStats, achievements = []) {
+        console.debug('UIRenderer.showEnding', { endingNode, sessionStats });
         const modal = this.elements.endgameModal;
         if (!modal) return;
 
@@ -663,6 +693,7 @@ export class UIRenderer {
     }
 
     manageModalFocus(modal, opener) {
+        console.debug('UIRenderer.manageModalFocus');
         if (!modal) return;
         this.modalOpener = opener || null;
 
@@ -690,6 +721,7 @@ export class UIRenderer {
     }
 
     closeAllModals() {
+        console.debug('UIRenderer.closeAllModals');
         const modals = document.querySelectorAll('.modal');
         if (modals.length > 0) {
             // Play modal close sound
@@ -712,6 +744,7 @@ export class UIRenderer {
 
     // Notifications
     showNotification(message, type = 'info') {
+        console.debug('UIRenderer.showNotification', { message, type });
         // Play notification sound
         if (type === 'success') {
             this.playUISound('assets/audio/success-sound.mp3');
@@ -742,6 +775,7 @@ export class UIRenderer {
     }
 
     showHelp() {
+        console.debug('UIRenderer.showHelp');
         const helpText = `
             <h3 class="text-xl font-bold mb-4">How to Play</h3>
             <ul class="list-disc list-inside space-y-2 text-sm">
@@ -779,6 +813,7 @@ export class UIRenderer {
 
     // Reset UI state
     reset() {
+        console.debug('UIRenderer.reset');
         this.elements.output.innerHTML = '';
         this.elements.choicesContainer.innerHTML = '';
         this.elements.journalContent.innerHTML = '';
@@ -810,12 +845,14 @@ export class UIRenderer {
 
     // UI Sound Effects
     playUISound(soundPath, volume = 0.3) {
+        console.debug('UIRenderer.playUISound', { soundPath, volume });
         if (this.audioManager && this.audioManager.isEnabled) {
             this.audioManager.playEffectSound(soundPath, volume);
         }
     }
 
     setAudioManager(audioManager) {
+        console.debug('UIRenderer.setAudioManager');
         this.audioManager = audioManager;
     }
 }
