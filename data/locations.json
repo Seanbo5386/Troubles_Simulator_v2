@@ -4,7 +4,7 @@
     "name": "Falls Road",
     "description": "The claustrophobic streets smell of damp brick and spray paint. Murals glare down as patrol boots echo through the night, each step questioning your loyalty.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/falls-road.jpg",
+    "originalBackgroundImage": "assets/images/falls-road.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/urban-tension.mp3",
     "connections": [
@@ -35,7 +35,7 @@
     "name": "Peace Line",
     "description": "Concrete and steel slice the community in two, razor wire and floodlights turning every passerby into a suspect.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/peace-wall.jpg",
+    "originalBackgroundImage": "assets/images/peace-wall.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/wind-barriers.mp3",
     "connections": [
@@ -65,7 +65,7 @@
     "name": "Shankill Road",
     "description": "Frying grease and cigarette smoke mingle as loyalist songs drift from doorways. Union Jacks flap like warnings, and murals of masked men stake their claim.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/shankill-road.jpg",
+    "originalBackgroundImage": "assets/images/shankill-road.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/loyalist-area.mp3",
     "connections": [
@@ -95,7 +95,7 @@
     "name": "Countryside Safehouse",
     "description": "A lonely farmhouse hides behind hedgerows, the damp earth heavy with the thrum of distant helicopters. Every creak could be an informer at the door.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/irish-countryside.jpg",
+    "originalBackgroundImage": "assets/images/irish-countryside.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/rural-helicopters.mp3",
     "connections": [
@@ -125,7 +125,7 @@
     "name": "Local Pub",
     "description": "Stale ale and old smoke cling to the low ceiling as murmured gossip passes between wary patrons. Strangers are judged in the time it takes to order a pint.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/irish-pub.jpg",
+    "originalBackgroundImage": "assets/images/irish-pub.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/pub-chatter.mp3",
     "connections": [
@@ -156,7 +156,7 @@
     "name": "Belfast City Centre",
     "description": "Glass crunches underfoot between boarded shops while sirens wail in the distance. Armored cars idle nearby, yet life presses on, brittle but unbroken.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/belfast-centre.jpg",
+    "originalBackgroundImage": "assets/images/belfast-centre.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/urban-anxiety.mp3",
     "connections": [
@@ -187,7 +187,7 @@
     "name": "Bombed Factory",
     "description": "Charred beams claw at a gray sky, the stench of burnt chemicals clinging to your clothes as rescue workers sift through the wreckage.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/bomb-damage.jpg",
+    "originalBackgroundImage": "assets/images/bomb-damage.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/desolation.mp3",
     "connections": [
@@ -217,7 +217,7 @@
     "name": "Military Checkpoint",
     "description": "Spotlights glare off armored plating as soldiers wave traffic through a gauntlet of sandbags. Radios crackle, and the line of cars grows restless.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/checkpoint.jpg",
+    "originalBackgroundImage": "assets/images/checkpoint.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/military-checkpoint.mp3",
     "connections": [
@@ -251,7 +251,7 @@
     "name": "Border Crossing",
     "description": "Barriers funnel travelers into narrow lanes under suspicious eyes. A single wrong answer here can change the rest of your life.",
     "backgroundImage": "",
-    "originalBackgroundImage": "assets/images/border-crossing.jpg",
+    "originalBackgroundImage": "assets/images/border-crossing.png",
     "ambientSound": "",
     "originalAmbientSound": "assets/audio/border-tension.mp3",
     "connections": [

@@ -33,7 +33,7 @@ The server is already running! Simply open your web browser and navigate to:
 ## Technical Notes
 
 - The game uses ES6 modules, which require a web server to run
-- Audio and images will show placeholders until you add actual assets
+- Audio and images will show placeholders until you add actual assets. Most images are PNG files, but the title screen and moral choice backgrounds are JPG. Location backgrounds are landscape orientation while character portraits are portrait orientation.
 - All progress is saved in your browser's localStorage
 - The game is fully responsive and works on mobile devices
 
