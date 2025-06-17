@@ -186,6 +186,7 @@ export class EventManager {
 
     // Process event choice
     processEventChoice(choice, player) {
+        console.debug('Processing event choice', choice);
         if (!this.activeEvent) {
             console.warn('No active event to process choice for');
             return null;
@@ -206,7 +207,7 @@ export class EventManager {
         
         // Clear active event
         this.activeEvent = null;
-        
+        console.debug('Event choice result', result);
         return result;
     }
 

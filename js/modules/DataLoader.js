@@ -29,6 +29,7 @@ export class DataLoader {
             
             const data = await response.json();
             this.cache.set(filename, data);
+            console.debug(`Loaded ${filename}`, data);
             return data;
         } catch (error) {
             console.error(`Error loading ${filename}:`, error);
@@ -57,6 +58,17 @@ export class DataLoader {
                 this.loadJSON('endings.json'),
                 this.loadOptionalJSON('glossary.json')
             ]);
+
+            console.debug('All data loaded', {
+                storyGraph,
+                characters,
+                locations,
+                dialogueTrees,
+                events,
+                items,
+                endings,
+                glossary
+            });
 
             if (endings) {
                 if (endings.nodes) {
