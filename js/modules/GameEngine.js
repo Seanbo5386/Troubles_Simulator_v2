@@ -166,6 +166,7 @@ export class GameEngine {
 
         // Initialize location
         this.currentLocation = this.gameData.locations[this.currentPlayer.location];
+        console.debug('Current location set', this.currentLocation);
         
         // Set up initial state
         this.state = 'playing';
@@ -178,6 +179,8 @@ export class GameEngine {
         
         // Start background music
         this.audioManager.playAmbientSound(this.currentLocation.ambientSound);
+
+        console.debug('Player initialized', this.currentPlayer);
         
         // Render initial location
         this.uiRenderer.renderLocation(this.currentLocation, this.currentPlayer);
@@ -191,7 +194,7 @@ export class GameEngine {
     }
 
     async onChoiceSelected(detail) {
-        console.log('Choice selected:', detail);
+        console.debug('Choice selected', detail);
 
         const choice = detail.choice || detail;
         const context = detail.context || 'story';
@@ -281,6 +284,7 @@ export class GameEngine {
     }
 
     async processStoryNode(nodeId) {
+        console.debug('Processing story node', nodeId);
         const node = this.gameData.storyGraph.nodes[nodeId];
         if (!node) {
             console.error(`Story node ${nodeId} not found`);
@@ -306,6 +310,7 @@ export class GameEngine {
     }
 
     async processAction(action, target) {
+        console.debug('Processing action', action, target);
         switch (action) {
             case 'move':
                 await this.moveToLocation(target);
@@ -328,6 +333,7 @@ export class GameEngine {
     }
 
     async moveToLocation(locationId) {
+        console.debug('Moving to location', locationId);
         const location = this.gameData.locations[locationId];
         if (!location) {
             console.error(`Location ${locationId} not found`);
@@ -366,6 +372,7 @@ export class GameEngine {
     }
 
     async startDialogue(npcId) {
+        console.debug('Starting dialogue with', npcId);
         const npcData = this.gameData.dialogueTrees.npcs[npcId];
         if (!npcData) {
             console.error(`NPC ${npcId} not found`);
@@ -390,6 +397,7 @@ export class GameEngine {
     }
 
     async searchLocation() {
+        console.debug('Searching current location');
         const location = this.currentLocation;
         if (!location.searchable) {
             this.uiRenderer.showNotification('There is nothing to search here.', 'info');
@@ -425,6 +433,7 @@ export class GameEngine {
     }
 
     async useItem(itemId) {
+        console.debug('Using item', itemId);
         if (!this.currentPlayer.inventory.includes(itemId)) {
             this.uiRenderer.showNotification('You do not have that item.', 'warning');
             return;
@@ -459,6 +468,7 @@ export class GameEngine {
     }
 
     applyEffects(effects) {
+        console.debug('Applying effects', effects);
         if (!effects) return;
 
         // Apply stat changes
@@ -519,6 +529,7 @@ export class GameEngine {
     }
 
     checkForRandomEvents() {
+        console.debug('Checking for random events');
         if (this.eventManager.activeEvent) return;
 
         if (Math.random() < 0.3) { // 30% chance
@@ -536,6 +547,7 @@ export class GameEngine {
     }
 
     triggerEvent(eventData) {
+        console.debug('Triggering event through game engine', eventData.id);
         const event = this.eventManager.triggerEvent(
             eventData,
             this.currentPlayer,

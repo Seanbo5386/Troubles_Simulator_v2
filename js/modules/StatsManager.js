@@ -186,6 +186,7 @@ export class StatsManager {
 
     // Choice tracking
     recordChoice(choice, responseTime = 0) {
+        console.debug('Recording choice', choice);
         this.sessionStats.choicesMade++;
         
         if (responseTime > 0) {
@@ -270,6 +271,7 @@ export class StatsManager {
 
     // Stats updates
     updatePlayerStats(player) {
+        console.debug('Updating player stats', player.stats);
         if (!player || !player.stats) return;
         
         // Track maximum values reached
