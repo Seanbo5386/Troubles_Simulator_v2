@@ -1,46 +1,47 @@
-AI Art Generation Prompts for Troubles Simulator v2
+AI Art Generation Prompts for Troubles Simulator v2 - images are mostly PNG
+files, with the title screen and moral choice backgrounds provided as JPG.
 
 LOCATION BACKGROUNDS (16:9 aspect ratio, realistic style):
 
-1. falls-road.jpg
+1. falls-road.png
 "Photorealistic 1970s Belfast street scene, Falls Road, Catholic area. Brick row houses with Republican murals on gable walls, Irish tricolor flags, wet cobblestone streets reflecting harsh streetlights, British Army patrol in distance, graffiti reading 'Brits Out', atmospheric fog, overcast sky. Moody lighting, cinematic composition, historical accuracy."
 
-2. peace-wall.jpg  
+2. peace-wall.png  
 "Imposing concrete barrier wall 30 feet high topped with razor wire, Belfast peace line, harsh floodlights casting stark shadows, watchtower with armed guards, graffiti on both sides, chain-link fencing, armored gate checkpoint, cold institutional atmosphere, grey overcast sky, documentary photography style."
 
-3. shankill-road.jpg
+3. shankill-road.png
 "1970s Protestant loyalist area Belfast, Union Jack flags on lampposts, red white blue bunting, loyalist paramilitary murals with masked figures, Orange Order symbols, Ulster Defense Association graffiti, brick terraced houses, memorial gardens with flowers, defensive architecture, gritty realism."
 
-4. irish-countryside.jpg
+4. irish-countryside.png
 "Remote Irish farmhouse safehouse, rolling green hills, stone walls, mist-covered fields, helicopter circling overhead, isolation and paranoia, blackout curtains in windows, single dirt road, sheep grazing, overcast dramatic sky, atmospheric lighting suggesting danger lurking in beauty."
 
-5. irish-pub.jpg
+5. irish-pub.png
 "Traditional Irish pub interior 1970s, dim amber lighting, wooden bar with brass fittings, dartboard, pint glasses, cigarette smoke haze, worried faces in shadowed corners, television showing news, conversations paused as stranger enters, tense atmosphere, warm but suspicious."
 
-6. belfast-centre.jpg
+6. belfast-centre.png
 "1970s Belfast city center, bomb-damaged Victorian buildings, security barriers, shoppers hurrying between stores, police with rifles, concrete blast barriers, broken glass swept aside, determined normalcy amid destruction, grey stone architecture, overcast British sky."
 
-7. bomb-damage.jpg
+7. bomb-damage.png
 "Devastated factory building after explosion, twisted metal beams reaching skyward, rubble and debris, emergency vehicles with flashing lights, rescue workers searching wreckage, smoke still rising, scattered personal belongings, harsh emergency lighting, documentary realism of aftermath."
 
-8. checkpoint.jpg
+8. checkpoint.png
 "Military checkpoint with sandbags, razor wire, armed British soldiers in combat gear, armored Land Rovers, searchlights, warning signs about lethal force, civilians being searched, tense confrontation, institutional authority, cold bureaucratic menace."
 
-9. border-crossing.jpg
+9. border-crossing.png
 "International border crossing Ireland/Northern Ireland, customs buildings, armed guards, vehicle searches, bureaucratic tension, flags of both jurisdictions, administrative coldness, political division made physical, institutional fluorescent lighting, passport control barriers."
 
 CHARACTER PORTRAITS (Portrait orientation, detailed faces):
 
-10. catholic-teen-portrait.jpg
+10. catholic-teen-portrait.png
 "Young Catholic teenager from Belfast, worried expression, worn clothing, backdrop of Falls Road murals, haunted eyes showing premature wisdom, realistic portrait style, 1970s fashion, vulnerable but determined."
 
-11. protestant-civil-servant-portrait.jpg  
+11. protestant-civil-servant-portrait.png  
 "Middle-aged Protestant civil servant, conservative dress, government building background, bureaucratic bearing, conflicted expression showing moral complexity, realistic portrait, professional attire, weight of responsibility in posture."
 
-12. foreign-reporter-portrait.jpg
+12. foreign-reporter-portrait.png
 "International journalist, press credentials visible, notebook and camera, outsider's perspective in eyes, backdrop of Belfast conflict zone, professional but emotionally affected, documentary photographer aesthetic."
 
-13. ira-volunteer-portrait.jpg
+13. ira-volunteer-portrait.png
 "IRA volunteer in hiding, paranoid expression, rural safehouse background, casual clothing for blending in, eyes constantly checking surroundings, tension in facial muscles, realistic portraiture showing psychological strain."
 
 ATMOSPHERIC/SYMBOLIC IMAGES:
