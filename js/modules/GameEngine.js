@@ -458,6 +458,7 @@ export class GameEngine {
     }
 
     async rest() {
+        console.debug('GameEngine.rest');
         this.applyEffects({
             tension: -3,
             morale: 2
@@ -503,6 +504,7 @@ export class GameEngine {
     }
 
     checkGameState() {
+        console.debug('GameEngine.checkGameState');
         // Check for game over conditions
         if (this.currentPlayer.stats.tension >= 100) {
             this.endGame(this.gameData.storyGraph.nodes.ending_exile);
@@ -561,6 +563,7 @@ export class GameEngine {
     }
 
     renderLocationHub() {
+        console.debug('GameEngine.renderLocationHub');
         const location = this.currentLocation;
         const availableActions = this.getAvailableActions();
         
@@ -568,6 +571,7 @@ export class GameEngine {
     }
 
     getAvailableActions() {
+        console.debug('GameEngine.getAvailableActions');
         const actions = [];
         const location = this.currentLocation;
         
@@ -632,6 +636,7 @@ export class GameEngine {
     }
 
     addJournalEntry(objectiveText, type = 'general') {
+        console.debug('GameEngine.addJournalEntry', { objectiveText, type });
         const { ptsd = 0, tension = 0, morale = 100 } =
             this.currentPlayer?.stats || {};
 
@@ -686,6 +691,7 @@ export class GameEngine {
     }
 
     endGame(endingNode) {
+        console.debug('GameEngine.endGame', endingNode);
         this.state = 'ended';
         this.gameStats.endTime = Date.now();
 
@@ -706,6 +712,7 @@ export class GameEngine {
     }
 
     saveGame() {
+        console.debug('GameEngine.saveGame');
         const saveData = {
             player: this.currentPlayer,
             gameStats: {
@@ -723,6 +730,7 @@ export class GameEngine {
     }
 
     loadGame() {
+        console.debug('GameEngine.loadGame');
         const saveData = this.saveManager.load();
         if (!saveData) {
             this.uiRenderer.showNotification('No save data found.', 'warning');
@@ -763,6 +771,7 @@ export class GameEngine {
     }
 
     restartGame() {
+        console.debug('GameEngine.restartGame');
         if (confirm('Are you sure you want to restart? All progress will be lost.')) {
             // Reset all state
             this.currentPlayer = null;
@@ -792,6 +801,7 @@ export class GameEngine {
     }
 
     toggleAccessibilityMode(enabled) {
+        console.debug('GameEngine.toggleAccessibilityMode', enabled);
         if (enabled) {
             document.body.classList.add('accessibility-mode');
         } else {
@@ -800,8 +810,9 @@ export class GameEngine {
     }
 
     hasUnsavedProgress() {
-        return this.state === 'playing' && 
-               this.currentPlayer && 
+        console.debug('GameEngine.hasUnsavedProgress');
+        return this.state === 'playing' &&
+               this.currentPlayer &&
                (!this.lastSaveTime || Date.now() - this.lastSaveTime > 300000); // 5 minutes
     }
 
