@@ -409,6 +409,9 @@ export class UIRenderer {
         // Store current stats for next comparison
         this.previousStats = { ...currentStats };
 
+        // Update journal degradation based on player condition
+        this.updateJournalAppearance(currentStats);
+
         // Update faction reputation
         this.updateFactionReputation(player.factionReputation);
 
@@ -428,6 +431,26 @@ export class UIRenderer {
         if (!barElement) return;
         const percentage = Math.max(0, Math.min(100, (value / max) * 100));
         barElement.style.width = `${percentage}%`;
+    }
+
+    updateJournalAppearance(stats) {
+        console.debug('UIRenderer.updateJournalAppearance', stats);
+        if (!this.elements.journalContent) return;
+
+        const container = this.elements.journalContent;
+
+        // Calculate stress level using tension and PTSD opposed by morale
+        const stressScore = (stats.tension * 0.4 + stats.ptsd * 0.6) -
+            (stats.morale * 0.3);
+        const normalized = Math.max(0, Math.min(100, stressScore));
+        const level = Math.min(4, Math.floor(normalized / 25));
+
+        // Remove previous degrade classes
+        for (let i = 0; i <= 4; i++) {
+            container.classList.remove(`degrade-${i}`);
+        }
+
+        container.classList.add(`degrade-${level}`);
     }
 
     updateFactionReputation(factionRep) {
@@ -817,6 +840,8 @@ export class UIRenderer {
         this.elements.output.innerHTML = '';
         this.elements.choicesContainer.innerHTML = '';
         this.elements.journalContent.innerHTML = '';
+        ['degrade-0','degrade-1','degrade-2','degrade-3','degrade-4'].forEach(c=>
+            this.elements.journalContent.classList.remove(c));
         this.elements.backgroundImage.style.backgroundImage = '';
         this.closeAllModals();
         
