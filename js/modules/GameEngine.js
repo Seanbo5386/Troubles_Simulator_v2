@@ -361,10 +361,10 @@ export class GameEngine {
         
         // Change ambient sound
         this.audioManager.playAmbientSound(location.ambientSound);
-        
-        // Render new location
-        this.uiRenderer.renderLocation(location, this.currentPlayer);
-        
+
+        // Render location hub (location + available actions)
+        this.renderLocationHub();
+
         // Trigger location changed event
         document.dispatchEvent(new CustomEvent('locationChanged', {
             detail: { locationId, location }
