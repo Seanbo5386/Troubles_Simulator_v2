@@ -488,6 +488,10 @@ export class GameEngine {
                     this.currentPlayer.npcRelationships[npc] += effects[key][npc];
                     this.currentPlayer.npcRelationships[npc] = Math.max(-10, Math.min(10, this.currentPlayer.npcRelationships[npc]));
                 });
+            } else if (key === 'setFlags') {
+                Object.keys(effects[key]).forEach(flag => {
+                    this.currentPlayer.flags[flag] = effects[key][flag];
+                });
             } else if (this.currentPlayer.stats[key] !== undefined) {
                 this.currentPlayer.stats[key] += effects[key];
                 

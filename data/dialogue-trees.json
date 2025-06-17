@@ -448,6 +448,139 @@
               "text": "Nothing right now.",
               "nextNode": "polite_exit",
               "requirements": []
+            },
+            {
+              "text": "I'm looking for information.",
+              "nextNode": "ask_info",
+              "requirements": []
+            },
+            {
+              "text": "We talked before.",
+              "nextNode": "follow_up",
+              "requirements": [
+                {
+                  "type": "flag",
+                  "key": "met_informant",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "ask_info": {
+          "text": "Depends on who you represent.",
+          "choices": [
+            {
+              "text": "You know I'm sympathetic to the IRA.",
+              "nextNode": "ira_info",
+              "requirements": [
+                {
+                  "type": "reputation",
+                  "key": "ira",
+                  "operator": ">=",
+                  "value": 1
+                }
+              ],
+              "effects": {
+                "setFlags": { "met_informant": true },
+                "npcRelations": { "informant": 1 }
+              }
+            },
+            {
+              "text": "Tell me about the UDA.",
+              "nextNode": "uda_info",
+              "requirements": [
+                {
+                  "type": "reputation",
+                  "key": "uda",
+                  "operator": ">=",
+                  "value": 1
+                }
+              ],
+              "effects": {
+                "setFlags": { "met_informant": true },
+                "npcRelations": { "informant": 1 }
+              }
+            },
+            {
+              "text": "I'm neutral, just looking for gossip.",
+              "nextNode": "generic_rumor",
+              "requirements": [],
+              "effects": {
+                "setFlags": { "met_informant": true }
+              }
+            }
+          ]
+        },
+        "ira_info": {
+          "text": "Word is the IRA is planning something big near the docks.",
+          "choices": [
+            {
+              "text": "Thanks for the tip.",
+              "nextNode": "polite_exit",
+              "requirements": [],
+              "effects": {
+                "npcRelations": { "informant": 1 }
+              }
+            }
+          ]
+        },
+        "uda_info": {
+          "text": "UDA lads are stockpiling weapons outside town.",
+          "choices": [
+            {
+              "text": "Good to know.",
+              "nextNode": "polite_exit",
+              "requirements": [],
+              "effects": {
+                "npcRelations": { "informant": 1 }
+              }
+            }
+          ]
+        },
+        "generic_rumor": {
+          "text": "There's talk of increased patrols and informers everywhere.",
+          "choices": [
+            {
+              "text": "Anything else?",
+              "nextNode": "more_generic",
+              "requirements": []
+            },
+            {
+              "text": "That's enough for now.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ],
+          "effects": {
+            "tension": 1
+          }
+        },
+        "more_generic": {
+          "text": "Keep your head down and trust no one.",
+          "choices": [
+            {
+              "text": "Understood.",
+              "nextNode": "polite_exit",
+              "requirements": []
+            }
+          ]
+        },
+        "follow_up": {
+          "text": "Oh, it's you again. Changed your mind?",
+          "choices": [
+            {
+              "text": "Got any new information?",
+              "nextNode": "ask_info",
+              "requirements": []
+            },
+            {
+              "text": "Just checking in.",
+              "nextNode": "polite_exit",
+              "requirements": [],
+              "effects": {
+                "npcRelations": { "informant": 1 }
+              }
             }
           ]
         }
