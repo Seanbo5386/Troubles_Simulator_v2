@@ -1,4 +1,4 @@
-const AUDIO_ASSETS_AVAILABLE = false; // Set to true when assets are available
+const AUDIO_ASSETS_AVAILABLE = true; // Set to true when assets are available
 
 export class AudioManager {
     constructor() {

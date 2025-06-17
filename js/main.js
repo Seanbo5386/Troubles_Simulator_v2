@@ -12,7 +12,8 @@ if (window.customElements && window.customElements.define) {
     };
 }
 
-const PRELOAD_ASSETS = false; // Set to true when assets are available
+// Enable asset loading when images and audio are bundled with the game
+const PRELOAD_ASSETS = true;
 class TroublesSimulator {
     constructor() {
         this.gameEngine = null;
