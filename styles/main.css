@@ -202,6 +202,16 @@ body.accessibility-mode .glass-panel {
 .journal-entry.action { border-left-color: #f59e0b; }
 .journal-entry.discovery { border-left-color: #14b8a6; }
 
+/* Journal Degradation Effects */
+#journal-content {
+    transition: filter 0.5s ease;
+}
+#journal-content.degrade-0 { filter: none; }
+#journal-content.degrade-1 { filter: grayscale(0.1) brightness(0.95); }
+#journal-content.degrade-2 { filter: grayscale(0.3) brightness(0.9); }
+#journal-content.degrade-3 { filter: grayscale(0.5) brightness(0.85); }
+#journal-content.degrade-4 { filter: grayscale(0.7) brightness(0.8); }
+
 /* Loading Animation */
 .loading-spinner {
     width: 40px;
