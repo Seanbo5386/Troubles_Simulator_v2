@@ -218,7 +218,28 @@ export class GameEngine {
         // Increment choice counter
         this.gameStats.choicesMade++;
 
-        if (context === 'event') {
+        if (context === 'dialogue' && this.activeDialogue) {
+            // Apply any effects tied to the dialogue choice
+            if (choice.effects) {
+                this.applyEffects(choice.effects);
+            }
+
+            const npcDialogue = this.activeDialogue.npcData.dialogueTree;
+            if (choice.nextNode && npcDialogue[choice.nextNode]) {
+                this.activeDialogue.currentNode = choice.nextNode;
+                this.uiRenderer.renderDialogue(this.activeDialogue);
+            } else {
+                // End dialogue if no valid next node
+                this.activeDialogue = null;
+                this.renderLocationHub();
+            }
+
+            this.uiRenderer.updatePlayerStats(this.currentPlayer);
+            this.uiRenderer.updateGameStats(this.gameStats);
+            this.checkGameState();
+            this.checkForRandomEvents();
+            return;
+        } else if (context === 'event') {
             this.statsManager.recordChoice(choice);
 
             const result = this.eventManager.processEventChoice(choice, this.currentPlayer);
