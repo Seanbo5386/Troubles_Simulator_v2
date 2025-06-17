@@ -258,6 +258,8 @@
 
             startCharacterCreation() {
                 this.state = "character_creation";
+                // Clear previous output so the introduction always appears first
+                this.output.innerHTML = "";
                 let characterHtml = `<p>${gameData.introText}</p><p class="mt-4 font-bold">Choose your background:</p><ul>`;
                 for (const key in gameData.characters) {
                     characterHtml += `<li class="mt-2"><span class="command-text">[${key}]</span>: ${gameData.characters[key].description}</li>`;
