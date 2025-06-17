@@ -2,6 +2,16 @@ import { GameEngine } from './modules/GameEngine.js';
 import { DataLoader } from './modules/DataLoader.js';
 import { i18n } from './modules/i18n.js';
 
+// Prevent errors if a custom element is registered multiple times
+if (window.customElements && window.customElements.define) {
+    const originalDefine = window.customElements.define;
+    window.customElements.define = function(name, ctor, options) {
+        if (!window.customElements.get(name)) {
+            originalDefine.call(this, name, ctor, options);
+        }
+    };
+}
+
 const PRELOAD_ASSETS = false; // Set to true when assets are available
 class TroublesSimulator {
     constructor() {
