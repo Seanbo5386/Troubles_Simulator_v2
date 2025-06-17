@@ -19,6 +19,11 @@ function gatherEvents(data) {
 
 const eventsData = loadJSON("data/events.json");
 const charactersData = loadJSON("data/characters.json");
+const dialogueTreesData = loadJSON("data/dialogue-trees.json");
+const storyGraph = loadJSON("data/story-graph.json");
+const locationsData = loadJSON("data/locations.json");
+const endingsData = loadJSON("data/endings.json");
+
 const events = gatherEvents(eventsData);
 const characters = Object.values(charactersData);
 
@@ -62,6 +67,10 @@ for (const char of characters) {
   (char.startingInventory || []).forEach((it) => startingItems.add(it));
 }
 
+// Build set of valid story nodes (story graph + endings)
+const validStoryNodes = new Set(Object.keys(storyGraph.nodes));
+Object.keys(endingsData).forEach((id) => validStoryNodes.add(id));
+
 // ----- Unreachable Events -----
 for (const event of events) {
   const cond = event.triggerConditions || {};
@@ -88,6 +97,54 @@ for (const event of events) {
             `item(s) ${missing.join(", ")} not in any starting inventory.`,
         );
       }
+    }
+  });
+}
+
+// ----- NextNode Validity: Events -----
+for (const event of events) {
+  (event.choices || []).forEach((choice) => {
+    if (choice.nextNode && !validStoryNodes.has(choice.nextNode)) {
+      errors.push(
+        `Invalid nextNode '${choice.nextNode}' in event '${event.id}'.`,
+      );
+    }
+  });
+}
+
+// ----- Dialogue Tree Validation & Orphans -----
+for (const [npcId, npc] of Object.entries(dialogueTreesData.npcs || {})) {
+  const tree = npc.dialogueTree || {};
+  const nodeIds = Object.keys(tree);
+  const nodeSet = new Set(nodeIds);
+  const referenced = new Set();
+
+  for (const [nodeId, node] of Object.entries(tree)) {
+    for (const choice of node.choices || []) {
+      if (choice.nextNode) {
+        if (!nodeSet.has(choice.nextNode) && !validStoryNodes.has(choice.nextNode)) {
+          errors.push(
+            `Invalid nextNode '${choice.nextNode}' in NPC '${npcId}' node '${nodeId}'.`,
+          );
+        } else {
+          referenced.add(choice.nextNode);
+        }
+      }
+    }
+  }
+
+  for (const nid of nodeIds) {
+    if (nid !== "initial" && !referenced.has(nid)) {
+      warnings.push(`Orphaned dialogue node '${npcId}:${nid}'`);
+    }
+  }
+}
+
+// ----- NPC References In Locations -----
+for (const [locId, loc] of Object.entries(locationsData)) {
+  (loc.npcs || []).forEach((npcId) => {
+    if (!dialogueTreesData.npcs[npcId]) {
+      errors.push(`Location '${locId}' references unknown NPC '${npcId}'.`);
     }
   });
 }
